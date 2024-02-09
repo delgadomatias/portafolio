@@ -1,0 +1,20 @@
+---
+import Footer from "@/components/shared/Footer.astro";
+import Home from "@components/sections/home/Home.astro";
+import Layout from "@layouts/Layout.astro";
+import AboutMe from "@sections/about-me/AboutMe.astro";
+import Blog from "@sections/blog/Blog.astro";
+import Experience from "@sections/experience/Experience.astro";
+import Projects from "@sections/projects/Projects.astro";
+---
+
+<Layout title="Matias Delgado">
+  <main class="container relative flex flex-col min-h-screenMinusNavbar gap-28">
+    <Home />
+    <AboutMe />
+    <Projects />
+    <Experience />
+    <Blog />
+  </main>
+  <Footer />
+</Layout>

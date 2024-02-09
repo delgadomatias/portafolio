@@ -1,0 +1,39 @@
+---
+import GithubIcon from "../icons/GithubIcon.astro";
+import InstagramIcon from "../icons/InstagramIcon.astro";
+import LinkedInIcon from "../icons/LinkedInIcon.astro";
+
+const SOCIAL_LINKS = [
+  {
+    name: "GitHub",
+    url: "https://www.github.com/delgadomatias",
+    Icon: GithubIcon,
+    titleLink: "El perfil de GitHub de Matias Delgado",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.github.com/delgadomatias",
+    Icon: LinkedInIcon,
+    titleLink: "El perfil de LinkedIn de Matias Delgado",
+  },
+  {
+    name: "Instagram",
+    url: "https://instagram.com/mmatidelga2",
+    Icon: InstagramIcon,
+    titleLink: "El perfil de Instagram de Matias Delgado",
+  },
+];
+---
+
+<div class="flex gap-3">
+  {
+    SOCIAL_LINKS.map((link) => {
+      const { Icon, titleLink, url } = link;
+      return (
+        <a href={url} title={titleLink}>
+          <Icon />
+        </a>
+      );
+    })
+  }
+</div>

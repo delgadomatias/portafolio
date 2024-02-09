@@ -1,0 +1,188 @@
+---
+import Navbar from "@/components/ui/Navbar.astro";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="relative bg-primary overflow-x-hidden">
+    <Navbar />
+    <slot />
+
+    <style is:global>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      code,
+      blockquote {
+        word-wrap: break-word;
+      }
+
+      pre > code {
+        white-space: pre;
+      }
+
+      .prose pre {
+        @apply rounded-md;
+      }
+
+      .prose code {
+        @apply w-full block p-2;
+      }
+
+      .prose hr {
+        @apply my-6;
+      }
+
+      .prose a {
+        @apply break-words;
+      }
+
+      .prose thead th:first-child,
+      tbody td:first-child,
+      tfoot td:first-child {
+        padding-left: 0.5714286em;
+      }
+
+      .prose h2 {
+        @apply mt-8 mb-4 text-3xl font-black;
+      }
+
+      .prose h2 #table-of-contents {
+        @apply mb-2;
+      }
+      .prose details {
+        @apply inline-block cursor-pointer select-none;
+      }
+
+      .prose summary {
+        @apply focus-outline text-white;
+      }
+
+      summary {
+        display: list-item;
+      }
+
+      .prose h2 + p {
+        @apply !m-0;
+      }
+
+      .prose details p {
+        @apply !opacity-100 !text-white;
+      }
+
+      mark {
+        color: #61ff00;
+        background: none;
+        font-weight: 600;
+      }
+
+      html {
+        scroll-padding-top: 80px;
+      }
+
+      ::selection {
+        background-color: #000;
+      }
+
+      /* Fonts */
+      @font-face {
+        font-family: "Franie";
+        src: url("/fonts/franie-regular.otf") format("opentype");
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Franie";
+        src: url("/fonts/franie-bold.otf") format("opentype");
+        font-weight: 700;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Junction";
+        src: url("/fonts/junction-regular.otf") format("opentype");
+        font-weight: 400;
+        font-display: swap;
+      }
+
+      /* Layers */
+      @layer base {
+        :root,
+        html[data-theme="dark"] {
+          --background-primary: #100720;
+          --text-color-primary: #fde047;
+          --text-color-secondary: #e3e4e4;
+
+          /* Paragraph */
+          --text-color-paragraph: #dfe4e2;
+          --text-color-paragraph-highlight: #61ff00;
+
+          --icons-color: #cdf37c;
+
+          /* Buttons */
+          --primary-button-color: #31087b;
+          --primary-button-border: #fa2fb5;
+        }
+
+        .prose h2#table-of-contents + p {
+          @apply hidden;
+        }
+
+        .prose {
+          @apply prose-headings:!mb-3 prose-headings:!text-white
+ prose-h3:italic prose-p:!text-white
+    prose-a:!text-white prose-a:!decoration-dashed prose-a:underline-offset-8
+    hover:prose-a:text-black prose-blockquote:border-l-yellow-300
+    prose-blockquote:border-opacity-50 prose-blockquote:opacity-80
+    prose-figcaption:!text-white prose-figcaption:opacity-70
+    prose-strong:!text-white
+
+    
+    prose-code:rounded 
+    prose-code:bg-opacity-75 prose-code:p-1 
+    prose-code:before:!content-[''] prose-code:after:!content-['']
+    prose-ol:!text-white 
+    prose-ul:overflow-x-clip prose-ul:!text-white prose-li:marker:!text-yellow-400
+    prose-table:text-white prose-th:border
+ prose-td:border 
+ prose-img:mx-auto 
+    prose-img:!mt-2 prose-img:border-2;
+        }
+      }
+
+      @layer components {
+        .container {
+          @apply max-w-4xl mx-auto;
+        }
+
+        .p-container {
+          @apply px-6 lg:px-0;
+        }
+
+        .focus-outline {
+          @apply outline-2 outline-offset-1 focus-visible:no-underline focus-visible:outline-dashed;
+        }
+      }
+    </style>
+  </body>
+</html>

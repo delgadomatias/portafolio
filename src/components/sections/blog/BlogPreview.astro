@@ -1,0 +1,54 @@
+---
+import Paragraph from "@/components/text/Paragraph.astro";
+import Subtitle from "@/components/text/Subtitle.astro";
+import { formatDate } from "@/utils/formatDate";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+  spanAll?: boolean;
+}
+
+const { post, spanAll } = Astro.props;
+const {
+  slug,
+  data: { title, publishDate, description },
+} = post;
+const formattedDate = formatDate(publishDate);
+---
+
+<div
+  class="overflow-hidden bg-[#f4b168] rounded-md shadow-slate-200"
+  class:list={{
+    "md:col-span-2": spanAll,
+  }}
+>
+  <!-- Image -->
+  <figure>
+    <a href={`/blog/${slug}`}>
+      <Image
+        transition:name={slug}
+        alt={`${title} Image`}
+        title={title}
+        class="aspect-video w-full"
+        height={600}
+        src="https://picsum.photos/id/101/800/600"
+        width={800}
+      />
+    </a>
+  </figure>
+  <!-- Body-->
+  <div class="p-6">
+    <header class="mb-4">
+      <Subtitle class="text-[#1e428f] font-black text-pretty">{title}</Subtitle>
+      <time
+        class="text-sm uppercase tracking-wider font-semibold text-[#555555]"
+        >{formattedDate}</time
+      >
+    </header>
+    <Paragraph class="text-start font-semibold text-black/60 max-w-full">
+      {description}
+    </Paragraph>
+  </div>
+</div>

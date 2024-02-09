@@ -1,0 +1,25 @@
+---
+import Paragraph from "@/components/text/Paragraph.astro";
+
+export interface Props {
+  date: string;
+  description: string;
+  subTitle: string;
+  title: string;
+}
+
+const { title, date, subTitle, description } = Astro.props;
+---
+
+<div
+  class="gap-4 flex flex-col bg-yellow-200/[0.3] p-6 pb-8 relative shadow-xl rounded-lg"
+>
+  <h3 class="text-xl font-bold">{title}</h3>
+  <Paragraph class="text-start max-w-full">
+    {description}
+  </Paragraph>
+  <div class="grid gap-1">
+    <p class="text-sm">{subTitle}</p>
+    <p class="text-sm">{date}</p>
+  </div>
+</div>

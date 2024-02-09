@@ -1,0 +1,19 @@
+{
+  "cSpell.words": [
+    "Github",
+    "IPET",
+    "Mati",
+    "Matias",
+    "pomodoro",
+    "renderizado",
+    "Teclearla",
+    "tecnica",
+    "tecnicatura",
+    "tecnologia",
+    "webp"
+  ],
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

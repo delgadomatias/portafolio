@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { Image } from "astro:assets";
+
+export interface Props extends HTMLAttributes<"img"> {
+  width: number;
+  height: number;
+}
+
+const { class: className, width, height } = Astro.props;
+---
+
+<Image
+  alt="Foto de perfil de Matias Delgado"
+  class={className}
+  height={height}
+  src="/images/profile-image.webp"
+  title="Foto de perfil de Matias Delgado"
+  width={width}
+  loading="eager"
+/>

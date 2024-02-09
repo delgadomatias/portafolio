@@ -1,0 +1,54 @@
+---
+import Section from "@components/layout/Section.astro";
+import ExperienceContainer from "./ExperienceContainer.astro";
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    title: "Trabajo",
+    items: [
+      {
+        title: "Frontend Developer",
+        subTitle: "Teclearla",
+        description:
+          "Teclearla es mi iniciativa para empezar a ganar experiencia en este mundo tecnológico. Es un equipo de dos personas, mi hermano y yo. Desarrollé paginas webs a distintos clientes.",
+        date: "2023 - Presente",
+      },
+    ],
+  },
+  {
+    title: "Educación",
+    items: [
+      {
+        title: "Ingeniería en Sistemas",
+        subTitle: "Universidad Nacional de Ingeniería",
+        description:
+          "Estoy en el cuarto año de la carrera, en la Universidad Nacional de Villa Maria, Córdoba.",
+        date: "2021 - Presente",
+      },
+      {
+        title: "Secundaria",
+        subTitle: "IPET 49 - Escuela Técnica",
+        description:
+          "Estudié en el IPET 49, una escuela técnica que me enseño acerca de otras cosas no referidas a la tecnología.",
+        date: "2015 - 2020",
+      },
+    ],
+  },
+];
+---
+
+<Section title="Experiencia" class="items-stretch gap-12" id="experience">
+  {
+    EXPERIENCE.map((item) => {
+      const { title, items } = item;
+      return (
+        <ExperienceContainer title={title} items={items.length}>
+          {items.map((item) => {
+            return <ExperienceItem {...item} />;
+          })}
+        </ExperienceContainer>
+      );
+    })
+  }
+</Section>

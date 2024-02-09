@@ -1,0 +1,89 @@
+---
+import Section from "@components/layout/Section.astro";
+import { Image } from "astro:assets";
+import ProjectItem from "./ProjectItem.astro";
+
+export interface Project {
+  alt: string;
+  code: string;
+  description: string;
+  image: string;
+  name: string;
+  tags: string[];
+  title: string;
+  url: string;
+}
+
+const PROJECTS = [
+  {
+    name: "Abogado Rojo",
+    description:
+      "Landing Page realizada para un abogado, con el fin de promocionar sus servicios y captar potenciales clientes. Con un enfoque en la elegancia, la seriedad y la velocidad de la pagina.",
+    image: "/images/projects/rojo.webp",
+    tags: ["Astro", "TailwindCSS"],
+    alt: "Imagen de la web de Abogado Rojo",
+    title: "Imagen de la web de Abogado Rojo",
+    url: "https://www.abogadorojo.com",
+    code: "https://www.github.com/delgadomatias/abogadorojo",
+  },
+  {
+    name: "Teclearla",
+    description:
+      "Landing Page realizada para mi Startup de Desarrollo Web, contiene renderizado del lado del servidor con Astro. También posee un formulario de contacto que envía un correo electrónico a mi bandeja de entrada.",
+    image: "/images/projects/teclearla.webp",
+    tags: ["NextJS", "TailwindCSS"],
+    alt: "Imagen de la web de Teclearla",
+    title: "Imagen de la web de Teclearla",
+    url: "https://www.teclearla.com.ar",
+    code: "https://www.github.com/delgadomatias/teclearla",
+  },
+  {
+    name: "Pomotech",
+    description:
+      "Aplicación que replica la técnica pomodoro para estudiar, trabajar o cualquier actividad que requiera concentración, podes agregar tareas y asignarles un tiempo de estudio y descanso.",
+    image: "/images/projects/pomotech.webp",
+    tags: ["NextJS", "TailwindCSS"],
+    alt: "Imagen de la web de Pomotech",
+    title: "Imagen de la web de Pomotech",
+    url: "https://pomotech.vercel.app/",
+    code: "https://www.github.com/delgadomatias/pomotech",
+  },
+  {
+    name: "Tesla Shop",
+    description:
+      "E-commerce de Tesla, podes visualizar productos, agregarlos al carrito de compras, realizar la compra via PayPal y ver el estado de tu pedido. Se permite la búsqueda por diversas categorías y distintos filtrados.",
+    image: "/images/projects/tesla.webp",
+    tags: ["NextJS", "TailwindCSS"],
+    alt: "Imagen de la web de Tesla Shop",
+    title: "Imagen de la web de Tesla Shop",
+    url: "https://teslashop.vercel.app/",
+    code: "https://www.github.com/delgadomatias/tesla-shop",
+  },
+];
+---
+
+<Section
+  class="items-stretch w-full md:items-center"
+  description="Algunos proyectos los cuales están construidos 100% por mi."
+  descriptionClass="p-container"
+  title="Proyectos"
+  id={"projects"}
+>
+  <div class="flex flex-col gap-12 mt-12 md:gap-0">
+    {
+      PROJECTS.map((project, index) => {
+        const isEven = index % 2 === 0;
+        return <ProjectItem project={project} isEven={isEven} />;
+      })
+    }
+    <div class="md:p-container md:mt-12">
+      <Image
+        alt="Imágenes de todos los proyectos"
+        class="w-full h-full min-h-64 object-cover"
+        height={800}
+        src="/images/projects/projects-full.webp"
+        width={1280}
+      />
+    </div>
+  </div>
+</Section>
