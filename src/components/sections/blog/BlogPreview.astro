@@ -1,7 +1,7 @@
 ---
-import Paragraph from "@/components/text/Paragraph.astro";
-import Subtitle from "@/components/text/Subtitle.astro";
-import { formatDate } from "@/utils/formatDate";
+import Paragraph from "@components/text/Paragraph.astro";
+import Subtitle from "@components/text/Subtitle.astro";
+import { formatDate } from "@utils/formatDate";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 
@@ -13,7 +13,7 @@ export interface Props {
 const { post, spanAll } = Astro.props;
 const {
   slug,
-  data: { title, publishDate, description },
+  data: { title, publishDate, description, image },
 } = post;
 const formattedDate = formatDate(publishDate);
 ---
@@ -29,11 +29,11 @@ const formattedDate = formatDate(publishDate);
     <a href={`/blog/${slug}`}>
       <Image
         transition:name={slug}
-        alt={`${title} Image`}
+        alt={image.alt}
         title={title}
-        class="aspect-video w-full"
+        class="w-full aspect-video"
         height={600}
-        src="https://picsum.photos/id/101/800/600"
+        src={image.src}
         width={800}
       />
     </a>
@@ -47,7 +47,7 @@ const formattedDate = formatDate(publishDate);
         >{formattedDate}</time
       >
     </header>
-    <Paragraph class="text-start font-semibold text-black/60 max-w-full">
+    <Paragraph class="max-w-full font-semibold text-start text-black/60">
       {description}
     </Paragraph>
   </div>

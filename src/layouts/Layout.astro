@@ -1,5 +1,5 @@
 ---
-import Navbar from "@/components/ui/Navbar.astro";
+import Navbar from "@components/ui/Navbar.astro";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
@@ -19,7 +19,7 @@ const { title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="relative bg-primary overflow-x-hidden">
+  <body class="relative overflow-x-hidden bg-primary">
     <Navbar />
     <slot />
 
@@ -96,7 +96,7 @@ const { title } = Astro.props;
       }
 
       html {
-        scroll-padding-top: 80px;
+        scroll-padding-top: 100px;
       }
 
       ::selection {

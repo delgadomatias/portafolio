@@ -1,4 +1,3 @@
-import { cn } from "@utils/cn";
 import {
   motion,
   useScroll,
@@ -7,6 +6,7 @@ import {
   useVelocity,
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import { cn } from "../../utils/cn";
 
 export const TracingBeam = ({
   children,

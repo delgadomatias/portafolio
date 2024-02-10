@@ -3,6 +3,9 @@ title: "Estudiar Ingeniería en Sistemas"
 tags: ["Universidad"]
 description: "¿Vale la pena estudiar la carrera en 2024? ¿Cuales son los contenidos de la misma? ¿Estudio una tecnicatura en programación o la carrera?"
 publishDate: 2021-07-09T12:00:00-00:00
+image:
+  src: "/images/computadora.webp"
+  alt: "Persona programando"
 ---
 
 En este post voy a explicar mi experiencia estudiando Ingeniería en Sistemas, específicamente en la UTNFRVM, quizás si no tenes mucha idea y escuchas el nombre de la carrera quedas sorprendido, digamos que la **realidad esta un poco alejada** del concepto inicial que formamos.

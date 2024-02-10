@@ -1,9 +1,9 @@
 ---
-import Subtitle from "@/components/text/Subtitle.astro";
+import Subtitle from "@components/text/Subtitle.astro";
 import { Image } from "astro:assets";
 import Layout from "./Layout.astro";
-import { formatDate } from "@/utils/formatDate";
-import LeftArrowIcon from "@/components/icons/LeftArrowIcon.astro";
+import { formatDate } from "@utils/formatDate";
+import LeftArrowIcon from "@components/icons/LeftArrowIcon.astro";
 import type { CollectionEntry } from "astro:content";
 
 export interface Props {
@@ -13,30 +13,30 @@ export interface Props {
 const { post } = Astro.props;
 const { Content } = await post.render();
 const { slug } = post;
-const { title, publishDate } = post.data;
+const { title, publishDate, image } = post.data;
 const formattedDate = formatDate(publishDate);
 ---
 
 <Layout title={title}>
   <main
-    class="container relative flex flex-col text-white pt-12 gap-8 p-container"
+    class="container relative flex flex-col gap-8 pt-12 text-white p-container"
   >
     <Image
       transition:name={slug}
-      alt="card image"
-      class="aspect-video w-full"
+      alt={image.alt}
+      class="w-full aspect-video"
       height={600}
-      src="https://picsum.photos/id/101/800/600"
+      src={image.src}
       width={800}
     />
     <section class="flex flex-col gap-6">
       <div>
         <button
-          class="focus-outline flex hover:opacity-75 gap-2 items-center"
+          class="flex items-center gap-2 focus-outline hover:opacity-75"
           onclick="history.back()"
         >
           <LeftArrowIcon />
-          <span class="text-xl mb-1">Volver</span>
+          <span class="mb-1 text-xl">Volver</span>
         </button>
       </div>
 
@@ -48,7 +48,7 @@ const formattedDate = formatDate(publishDate);
       </div>
     </section>
 
-    <div class="text-lg md:text-xl font-junction prose text-pretty">
+    <div class="text-lg prose md:text-xl font-junction text-pretty">
       <Content />
     </div>
   </main>

@@ -40,8 +40,7 @@ const EXPERIENCE = [
 
 <Section title="Experiencia" class="items-stretch gap-12" id="experience">
   {
-    EXPERIENCE.map((item) => {
-      const { title, items } = item;
+    EXPERIENCE.map(({ title, items }) => {
       return (
         <ExperienceContainer title={title} items={items.length}>
           {items.map((item) => {

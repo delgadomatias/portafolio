@@ -30,7 +30,12 @@ const SOCIAL_LINKS = [
     SOCIAL_LINKS.map((link) => {
       const { Icon, titleLink, url } = link;
       return (
-        <a href={url} title={titleLink}>
+        <a
+          href={url}
+          title={titleLink}
+          class="transition-transform duration-300 ease-in-out hover:-translate-y-1"
+          target="_blank"
+        >
           <Icon />
         </a>
       );

@@ -1,9 +1,9 @@
 ---
-import GithubIcon from "@/components/icons/GithubIcon.astro";
-import WWWIcon from "@/components/icons/WWWIcon.astro";
-import Pill from "@/components/shared/Pill.astro";
-import Paragraph from "@/components/text/Paragraph.astro";
-import Subtitle from "@/components/text/Subtitle.astro";
+import GithubIcon from "@components/icons/GithubIcon.astro";
+import WWWIcon from "@components/icons/WWWIcon.astro";
+import Pill from "@components/shared/Pill.astro";
+import Paragraph from "@components/text/Paragraph.astro";
+import Subtitle from "@components/text/Subtitle.astro";
 import { Image } from "astro:assets";
 import type { Project } from "./Projects.astro";
 
@@ -24,36 +24,36 @@ const { name, image, description, alt, title, tags, code, url } = project;
     class:list={{
       "md:order-1": isEven,
       "md:order-2": !isEven,
-      "md:pl-5": !isEven,
-      "md:pr-5": isEven,
+      "md:pl-8": !isEven,
+      "md:pr-8": isEven,
     }}
   >
     <Subtitle class="font-bold">{name}</Subtitle>
     <Paragraph>{description}</Paragraph>
-    <div class="flex gap-4 items-center flex-col">
-      <div class="flex gap-2 flex-wrap items-center justify-center">
+    <div class="flex flex-col items-center gap-4">
+      <div class="flex flex-wrap items-center justify-center gap-2">
         {
           tags.map((tag) => {
             return <Pill>{tag}</Pill>;
           })
         }
       </div>
-      <div class="flex gap-2 flex-wrap items-center justify-center">
+      <div class="flex flex-wrap items-center justify-center gap-2">
         <a
           href={url}
-          class="bg-gray-800 px-4 py-2 text-white font-bold rounded-xl flex gap-2 items-center"
+          class="flex items-center gap-2 px-4 py-2 font-bold text-white bg-gray-800 rounded-xl"
           target="_blank"
         >
-          <WWWIcon class="h-6 w-6" />
+          <WWWIcon class="w-6 h-6" />
           Visitar
         </a>
 
         <a
           href={code}
-          class="bg-gray-800 px-4 py-2 text-white font-bold rounded-xl flex gap-2 items-center"
+          class="flex items-center gap-2 px-4 py-2 font-bold text-white bg-gray-800 rounded-xl"
           target="_blank"
         >
-          <GithubIcon class="h-6 w-6 stroke-white" />
+          <GithubIcon class="w-6 h-6 stroke-white" />
           Código
         </a>
       </div>
@@ -61,21 +61,24 @@ const { name, image, description, alt, title, tags, code, url } = project;
   </div>
 
   <div
-    class="order-1 col-span-1 overflow-hidden relative md:p-container"
+    class="relative order-1 col-span-1 overflow-hidden md:p-container"
     class:list={{
       "md:order-2": isEven,
       "md:order-1": !isEven,
-      "md:pr-0": !isEven,
-      "md:pl-0": isEven,
+      "md:!pr-0": !isEven,
+      "md:!pl-0": isEven,
     }}
   >
     <div
-      class="absolute bottom-0 bg-red-500 w-full border-4 z-20 w-full"
-      style="border-image: linear-gradient(90deg, rgba(198,80,114,1) 2%, rgba(228,68,114,1) 50%, rgba(181,8,110,1) 100%) 1;"
+      class="absolute bottom-0 z-20 w-full bg-red-500 border-4 lg:left-0"
+      style="border-image: linear-gradient(90deg, rgba(197,80,114,1) 2%, rgba(228,68,114,1) 50%, rgba(181,8,110,1) 100%) 1;"
+      class:list={{
+        "md:-left-[1.5rem]": isEven,
+      }}
     >
     </div>
     <div
-      class="transition-transform duration-500 ease-in-out transform hover:scale-110 h-full w-full"
+      class="w-full h-full transition-transform duration-500 ease-in-out transform lg:hover:scale-110"
     >
       <Image
         width={500}
@@ -83,36 +86,14 @@ const { name, image, description, alt, title, tags, code, url } = project;
         alt={alt}
         title={title}
         src={image}
-        class="w-full object-cover max-h-[250px] md:max-h-fit shadow-xl"
+        class="w-full object-cover max-h-[300px] h-[400px] lg:h-full md:max-h-fit shadow-xl"
         class:list={{
           "md:rounded-lg md:rounded-tr-none md:rounded-br-none": !isEven,
           "md:rounded-lg md:rounded-tl-none md:rounded-bl-none": isEven,
         }}
-        <!--
-        style={{
-          borderImage:
-            "linear-gradient(to right, transparent, #9F16D1, black) 3;",
-        }}
-        --
       >
         />
       </Image>
-      <!-- <Image
-      width={500}
-      height={500}
-      src={image}
-      class="w-full object-cover max-h-[250px] md:max-h-fit shadow-xl border-b-8 !overflow-hidden"
-      class:list={{
-        "md:rounded-lg md:rounded-tr-none md:rounded-br-none": !isEven,
-        "md:rounded-lg md:rounded-tl-none md:rounded-bl-none": isEven,
-      }}
-      alt={alt}
-      title={title}
-      style={{
-        borderImage:
-          "linear-gradient(to right, transparent, #9F16D1, black) 3;",
-      }}
-    /> -->
     </div>
   </div>
 </article>

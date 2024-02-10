@@ -8,6 +8,10 @@ const blogCollection = defineCollection({
     description: z.string(),
     publishDate: z.date(),
     relatedPosts: z.array(reference("blog")).optional(),
+    image: z.object({
+      src: z.string(),
+      alt: z.string(),
+    }),
   }),
 });
 
