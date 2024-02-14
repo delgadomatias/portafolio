@@ -10,7 +10,7 @@ import DownArrowIcon from "@icons/DownArrowIcon.astro";
 ---
 
 <section
-  class="relative flex flex-col items-center justify-center gap-4 pb-8 min-h-screenMinusNavbar p-container"
+  class="relative flex flex-col items-center justify-center gap-4 pt-8 pb-8 min-h-screenMinusNavbar p-container"
   id="home"
 >
   <div class="absolute bottom-0 pb-1" id="down-arrow">
@@ -44,3 +44,11 @@ import DownArrowIcon from "@icons/DownArrowIcon.astro";
     <PrimaryAnchor href="#">Contacto</PrimaryAnchor>
   </div>
 </section>
+
+<style>
+  @media screen and (max-height: 768px) {
+    #down-arrow {
+      @apply hidden;
+    }
+  }
+</style>

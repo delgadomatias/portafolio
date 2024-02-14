@@ -1,13 +1,16 @@
 ---
+import { cn } from "@utils/cn";
 import type { HTMLAttributes } from "astro/types";
 export interface Props extends HTMLAttributes<"a"> {}
 
-const { href, ...rest } = Astro.props;
+const { href, class: className, ...rest } = Astro.props;
 ---
 
 <a
   href={href}
   {...rest}
-  class="bg-[#31087B] border-2 border-[#FA2FB5] text-white font-semibold font-title rounded-full px-9 py-4 text-xl"
-  ><slot /></a
+  class={cn(
+    "bg-[#31087B] border-2 border-[#FA2FB5] text-white font-semibold font-title rounded-full px-9 py-4 text-xl",
+    className,
+  )}><slot /></a
 >

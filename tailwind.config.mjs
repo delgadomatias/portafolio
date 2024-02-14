@@ -35,7 +35,7 @@ export default {
         paragraphHighlight: "var(--text-color-paragraph-highlight)",
       },
       minHeight: {
-        screenMinusNavbar: "calc(100dvh - 78px)",
+        screenMinusNavbar: "calc(100dvh - 68px)",
       },
     },
   },
