@@ -1,20 +1,17 @@
 ---
-import Home from "@components/sections/home/Home.astro";
-import Footer from "@components/shared/Footer.astro";
+import LeftSide from "@components/sections/home/LeftSide.astro";
+import RightSide from "@components/sections/home/RightSide.astro";
 import Layout from "@layouts/Layout.astro";
-import AboutMe from "@sections/about-me/AboutMe.astro";
-import Blog from "@sections/blog/Blog.astro";
-import Experience from "@sections/experience/Experience.astro";
-import Projects from "@sections/projects/Projects.astro";
 ---
 
 <Layout title="Matias Delgado">
-  <main class="container relative flex flex-col min-h-screenMinusNavbar gap-28">
-    <Home />
-    <AboutMe />
+  <main class="container grid md:grid-cols-2 text-white gap-8">
+    <LeftSide />
+    <RightSide />
+    <!-- <AboutMe />
     <Projects />
     <Experience />
-    <Blog />
+    <Blog /> -->
   </main>
-  <Footer />
+  <!-- <Footer /> -->
 </Layout>
