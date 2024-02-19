@@ -17,12 +17,26 @@ export default {
   theme: {
     extend: {
       backgroundColor: {
-        primary: "var(--background-primary)",
+        primary: {
+          "50": "#f5f6f6",
+          "100": "#e5e7e8",
+          "200": "#cdd0d4",
+          "300": "#aab0b6",
+          "400": "#808890",
+          "500": "#656d75",
+          "600": "#565c64",
+          "700": "#4a4e54",
+          "800": "#414449",
+          "900": "#393b40",
+          "950": "#161719",
+        },
+        primarySlate: "#1C1D1F",
       },
       fontFamily: {
         title: ["Franie"],
         sans: ["Plus Jakarta Sans"],
         junction: ["Junction"],
+        inter: ["Inter"],
       },
       colors: {
         primary: "var(--text-color-primary)",

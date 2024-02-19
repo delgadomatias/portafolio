@@ -19,7 +19,7 @@ const { title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="relative overflow-x-hidden bg-primary">
+  <body class="relative overflow-x-hidden bg-primary-950">
     <Navbar />
     <slot />
 
@@ -91,7 +91,7 @@ const { title } = Astro.props;
 
       mark {
         color: #61ff00;
-        background: none;
+        :none;
         font-weight: 600;
       }
 
