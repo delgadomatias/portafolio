@@ -1,1 +1,36 @@
-<section class="h-[3000px] bg-red-950 p-container">Right Side</section>
+---
+import AboutMe from "../about-me/AboutMe.astro";
+import Blog from "../blog/Blog.astro";
+import Experience from "../experience/Experience.astro";
+import Projects from "../projects/Projects.astro";
+---
+
+<div
+  class="relative flex flex-col gap-32 px-6 py-8 xl:py-12 2xl:py-24"
+  id="right-section"
+>
+  <AboutMe />
+  <Experience />
+  <Projects />
+  <Blog />
+  <div
+    class="fixed top-0 h-screen from-transparent to-[#000814] via-[#000814]/[0.5] bg-gradient-to-b from-80% rounded-md rounded-br-none rounded-bl-none z-10"
+  >
+  </div>
+</div>
+
+<script is:inline>
+  window.addEventListener("load", () => {
+    const parent = document.querySelector("#right-section");
+    const child = parent.querySelector(".fixed");
+    const newWidth = `${parent.getBoundingClientRect().width}px - 3rem`;
+    child.style.width = `calc(${newWidth})`;
+  });
+
+  window.addEventListener("resize", () => {
+    const parent = document.querySelector(".relative");
+    const child = document.querySelector(".fixed");
+    const newWidth = `${parent.getBoundingClientRect().width}px - 3rem`;
+    child.style.width = `calc(${newWidth})`;
+  });
+</script>

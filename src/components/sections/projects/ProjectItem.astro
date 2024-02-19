@@ -1,7 +1,6 @@
 ---
 import GithubIcon from "@components/icons/GithubIcon.astro";
 import WWWIcon from "@components/icons/WWWIcon.astro";
-import Pill from "@components/shared/Pill.astro";
 import Paragraph from "@components/text/Paragraph.astro";
 import Subtitle from "@components/text/Subtitle.astro";
 import { Image } from "astro:assets";
@@ -16,28 +15,39 @@ const { project, isEven } = Astro.props;
 const { name, image, description, alt, title, tags, code, url } = project;
 ---
 
-<article
-  class="relative grid items-stretch w-full h-full gap-6 md:grid-cols-2 md:gap-0"
->
-  <div
-    class="flex flex-col items-center justify-center order-2 col-span-1 gap-6 p-container"
-    class:list={{
-      "md:order-1": isEven,
-      "md:order-2": !isEven,
-      "md:pl-8": !isEven,
-      "md:pr-8": isEven,
-    }}
-  >
+<article class="relative grid items-stretch w-full h-full gap-2">
+  <div class="relative overflow-hidden">
+    <div class="absolute bottom-0 z-20 w-full bg-red-500"></div>
+    <div
+      class="w-full h-full transition-transform duration-500 ease-in-out transform"
+    >
+      <Image
+        width={500}
+        height={500}
+        alt={alt}
+        title={title}
+        src={image}
+        class="w-full object-cover max-h-[300px] h-[400px] lg:h-full md:max-h-[350px] shadow-xl"
+        class:list={{
+          "md:rounded-lg md:rounded-tr-none md:rounded-br-none": !isEven,
+          "md:rounded-lg md:rounded-tl-none md:rounded-bl-none": isEven,
+        }}
+      >
+        />
+      </Image>
+    </div>
+  </div>
+  <div class="flex flex-col items-center justify-center gap-3 p-4">
     <Subtitle class="font-bold">{name}</Subtitle>
     <Paragraph>{description}</Paragraph>
     <div class="flex flex-col items-center gap-4">
-      <div class="flex flex-wrap items-center justify-center gap-2">
+      <!-- <div class="flex flex-wrap items-center justify-center gap-2">
         {
           tags.map((tag) => {
             return <Pill>{tag}</Pill>;
           })
         }
-      </div>
+      </div> -->
       <div class="flex flex-wrap items-center justify-center gap-2">
         <a
           href={url}
@@ -59,41 +69,6 @@ const { name, image, description, alt, title, tags, code, url } = project;
       </div>
     </div>
   </div>
-
-  <div
-    class="relative order-1 col-span-1 overflow-hidden md:p-container"
-    class:list={{
-      "md:order-2": isEven,
-      "md:order-1": !isEven,
-      "md:!pr-0": !isEven,
-      "md:!pl-0": isEven,
-    }}
-  >
-    <div
-      class="absolute bottom-0 z-20 w-full bg-red-500 border-4 lg:left-0"
-      style="border-image: linear-gradient(90deg, rgba(197,80,114,1) 2%, rgba(228,68,114,1) 50%, rgba(181,8,110,1) 100%) 1;"
-      class:list={{
-        "md:-left-[1.5rem]": isEven,
-      }}
-    >
-    </div>
-    <div
-      class="w-full h-full transition-transform duration-500 ease-in-out transform lg:hover:scale-110"
-    >
-      <Image
-        width={500}
-        height={500}
-        alt={alt}
-        title={title}
-        src={image}
-        class="w-full object-cover max-h-[300px] h-[400px] lg:h-full md:max-h-fit shadow-xl"
-        class:list={{
-          "md:rounded-lg md:rounded-tr-none md:rounded-br-none": !isEven,
-          "md:rounded-lg md:rounded-tl-none md:rounded-bl-none": isEven,
-        }}
-      >
-        />
-      </Image>
-    </div>
-  </div>
 </article>
+
+<!--       style="border-image: linear-gradient(90deg, rgba(197,80,114,1) 2%, rgba(228,68,114,1) 50%, rgba(181,8,110,1) 100%) 1;" -->

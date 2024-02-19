@@ -7,10 +7,9 @@ import type { CollectionEntry } from "astro:content";
 
 export interface Props {
   post: CollectionEntry<"blog">;
-  spanAll?: boolean;
 }
 
-const { post, spanAll } = Astro.props;
+const { post } = Astro.props;
 const {
   slug,
   data: { title, publishDate, description, image },
@@ -18,12 +17,7 @@ const {
 const formattedDate = formatDate(publishDate);
 ---
 
-<div
-  class="overflow-hidden bg-[#f4b168] rounded-md shadow-slate-200"
-  class:list={{
-    "md:col-span-2": spanAll,
-  }}
->
+<div class="overflow-hidden bg-[#001D3D] rounded-md shadow-slate-200">
   <!-- Image -->
   <figure>
     <a href={`/blog/${slug}`}>
@@ -38,16 +32,16 @@ const formattedDate = formatDate(publishDate);
       />
     </a>
   </figure>
+
   <!-- Body-->
   <div class="p-6">
     <header class="mb-4">
-      <Subtitle class="text-[#1e428f] font-black text-pretty">{title}</Subtitle>
-      <time
-        class="text-sm uppercase tracking-wider font-semibold text-[#444444]"
+      <Subtitle class="font-black text-white text-pretty">{title}</Subtitle>
+      <time class="text-sm font-semibold tracking-wider text-white uppercase"
         >{formattedDate}</time
       >
     </header>
-    <Paragraph class="max-w-full font-semibold text-start text-black/60">
+    <Paragraph class="max-w-full font-semibold text-start text-white/[0.7]">
       {description}
     </Paragraph>
   </div>

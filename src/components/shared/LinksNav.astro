@@ -1,0 +1,70 @@
+---
+import { NAVBAR } from "config";
+---
+
+<div class="hidden gap-4 max-w-fit lg:grid">
+  {
+    NAVBAR.links.map((link, index) => {
+      return (
+        <a
+          href={link.href}
+          class="grid items-center grid-cols-[20px_40px_100px] gap-4
+          opacity-70 nav-link transition-all duration-200 text-sm"
+        >
+          <span class="font-semibold">0{index + 1}</span>
+          <span class="w-full h-[0.20rem] bg-[#003566]/[0.3] separator" />
+          <span class="font-semibold tracking-wider uppercase">
+            {link.title}
+          </span>
+        </a>
+      );
+    })
+  }
+</div>
+
+<script>
+  import { NAVBAR } from "config";
+
+  if (window.innerWidth >= 1024) {
+    function highlightNavLink(
+      entries: IntersectionObserverEntry[],
+      observer: IntersectionObserver,
+    ) {
+      entries.forEach((entry) => {
+        const linkToHighlight = document.querySelector(
+          `a[href="#${entry.target.id}"]`,
+        )!;
+        const separator = linkToHighlight.querySelector(".separator")!;
+
+        if (entry.isIntersecting) {
+          separator.classList.add("!bg-[#003566]");
+          linkToHighlight.classList.add("!grid-cols-[20px_100px_100px]");
+          linkToHighlight.classList.remove("opacity-70");
+
+          if (entry.target.id !== "about") {
+            history.replaceState(null, "", `#${entry.target.id}`);
+          } else {
+            history.replaceState(null, "", window.location.pathname);
+          }
+        } else {
+          separator.classList.remove("!bg-[#003566]");
+          linkToHighlight.classList.remove("!grid-cols-[20px_100px_100px]");
+          linkToHighlight.classList.add("opacity-70");
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver(highlightNavLink, {
+      rootMargin: "0px 0px -75% 0px",
+    });
+
+    const sectionsId = NAVBAR.links.map((link) => link.href.slice(1));
+    const sections = sectionsId.map((id) => document.getElementById(id));
+
+    sections.forEach((section) => {
+      if (section) {
+        observer.observe(section);
+      }
+    });
+  }
+</script>

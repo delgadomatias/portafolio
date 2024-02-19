@@ -21,17 +21,19 @@ const {
 
 <section
   {...rest}
-  class={cn("relative flex flex-col items-center  gap-4 pb-8", className)}
+  class={cn("relative flex flex-col items-center gap-4", className)}
 >
-  <Title class="text-center">{title}</Title>
-  {
-    description && (
-      <>
-        <Paragraph class={cn("opacity-70", descriptionClass)}>
-          {description}
-        </Paragraph>
-      </>
-    )
-  }
-  <slot />
+  <div>
+    <Title class="mb-6 text-center">{title}</Title>
+    {
+      description && (
+        <>
+          <Paragraph class={cn("opacity-70", descriptionClass)}>
+            {description}
+          </Paragraph>
+        </>
+      )
+    }
+    <slot />
+  </div>
 </section>

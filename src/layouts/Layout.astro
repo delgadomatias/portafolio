@@ -9,7 +9,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es" data-theme="dark">
+<html lang="es" data-theme="dark" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -58,7 +58,7 @@ const { title } = Astro.props;
       .prose thead th:first-child,
       tbody td:first-child,
       tfoot td:first-child {
-        padding-left: 0.5714286em;
+        ding-left: 0.5714286em;
       }
 
       .prose h2 {
@@ -95,7 +95,7 @@ const { title } = Astro.props;
       }
 
       html {
-        scroll-padding-top: 100px;
+        scroll-padding-top: 6rem;
       }
 
       ::selection {
@@ -128,8 +128,8 @@ const { title } = Astro.props;
       @layer base {
         :root,
         html[data-theme="dark"] {
-          --background-primary: #100720;
-          --text-color-primary: #fde047;
+          --background-primary: #000814;
+          --text-color-primary: #ffd60a;
           --text-color-secondary: #e3e4e4;
 
           /* Paragraph */
@@ -166,6 +166,10 @@ const { title } = Astro.props;
  prose-td:border 
  prose-img:mx-auto 
     prose-img:!mt-2 prose-img:border-2;
+        }
+
+        .active {
+          color: red;
         }
       }
 

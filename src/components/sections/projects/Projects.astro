@@ -1,6 +1,5 @@
 ---
 import Section from "@components/layout/Section.astro";
-import { Image } from "astro:assets";
 import ProjectItem from "./ProjectItem.astro";
 
 export interface Project {
@@ -63,27 +62,16 @@ const PROJECTS = [
 ---
 
 <Section
-  class="items-stretch w-full md:items-center"
-  description="Algunos proyectos los cuales están construidos 100% por mi."
-  descriptionClass="p-container"
+  class="items-stretch w-full gap-8 md:items-center"
   title="Proyectos"
   id={"projects"}
 >
-  <div class="flex flex-col gap-12 mt-12 md:gap-0">
+  <div class="flex flex-col gap-12">
     {
       PROJECTS.map((project, index) => {
         const isEven = index % 2 === 0;
         return <ProjectItem project={project} isEven={isEven} />;
       })
     }
-    <div class="md:p-container md:mt-12">
-      <Image
-        alt="Imágenes de todos los proyectos"
-        class="w-full h-full min-h-64 object-cover"
-        height={800}
-        src="/images/projects/projects-full.webp"
-        width={1280}
-      />
-    </div>
   </div>
 </Section>
