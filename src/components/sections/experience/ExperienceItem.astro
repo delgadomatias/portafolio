@@ -12,10 +12,10 @@ const { title, date, subTitle, description } = Astro.props;
 ---
 
 <div
-  class="gap-4 flex flex-col bg-yellow-200/[0.3] p-6 pb-8 relative shadow-xl rounded-lg"
+  class="relative flex flex-col gap-4 p-6 pb-8 rounded-lg shadow-xl bg-primary-700"
 >
   <h3 class="text-xl font-bold">{title}</h3>
-  <Paragraph class="text-start max-w-full">
+  <Paragraph class="max-w-full text-start">
     {description}
   </Paragraph>
   <div class="grid gap-1">

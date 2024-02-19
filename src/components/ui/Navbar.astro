@@ -2,25 +2,50 @@
 import Paragraph from "@components/text/Paragraph.astro";
 import { NAVBAR } from "config";
 import CircleProfileImage from "./CircleProfileImage.astro";
+import Menu from "./Menu.astro";
 ---
 
 <header class="sticky top-0 h-[70px] z-50 bg-primarySlate">
-  <nav class="container h-full p-container">
+  <div
+    class="absolute flex flex-col w-full h-full gap-4 py-12 transition-all p-container bg-primary-950 menu-div notVisible"
+  >
+    {
+      NAVBAR.links.map((link) => {
+        return (
+          <a
+            href={link.href}
+            class="block w-full text-4xl text-center text-white nav-link"
+          >
+            {link.title}
+          </a>
+        );
+      })
+    }
+  </div>
+  <nav class="container relative h-full p-container">
     <ul class="flex items-center justify-between w-full h-full text-white">
-      <li class="inline-flex gap-3 items-center">
+      <li class="inline-flex items-center gap-3">
         <CircleProfileImage width={35} height={35} />
         <div class="text-start grid gap-0.5">
-          <Paragraph class="md:text-xs text-start">Frontend Developer</Paragraph
+          <Paragraph class="text-xs md:text-xs text-start"
+            >Frontend Developer</Paragraph
           >
-          <Paragraph class="md:text-xs text-start">Matias Delgado</Paragraph>
+          <Paragraph class="text-xs md:text-xs text-start"
+            >Matias Delgado</Paragraph
+          >
         </div>
       </li>
-      <li class="flex gap-3 text-md">
+
+      <li class="hidden gap-3 text-md md:flex">
         {
           NAVBAR.links.map((link) => {
             return <a href={link.href}>{link.title}</a>;
           })
         }
+      </li>
+
+      <li class="block md:hidden">
+        <Menu />
       </li>
     </ul>
   </nav>
@@ -40,4 +65,36 @@ import CircleProfileImage from "./CircleProfileImage.astro";
       backdrop-filter: blur(15px);
     }
   }
+
+  .notVisible {
+    @apply pointer-events-none top-0 opacity-0;
+  }
+
+  .visible {
+    @apply w-full h-screen pointer-events-auto top-[100%] opacity-100;
+  }
 </style>
+
+<script is:inline>
+  const menuButton = document.querySelector(".menu-btn");
+  const menuDiv = document.querySelector(".menu-div");
+  const menuFirstLine = document.querySelector(".menu-btn .first-line");
+  const menuSecondLine = document.querySelector(".menu-btn .second-line");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      setTimeout(() => {
+        menuDiv.classList.toggle("visible");
+        document.body.classList.remove("overflow-hidden");
+        menuFirstLine.classList.toggle("rotate-45");
+        menuSecondLine.classList.toggle("-rotate-45");
+      }, 50);
+    });
+  });
+
+  menuButton.addEventListener("click", () => {
+    menuDiv.classList.toggle("visible");
+    document.body.classList.toggle("overflow-hidden");
+  });
+</script>
