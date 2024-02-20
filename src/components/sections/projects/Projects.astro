@@ -8,6 +8,7 @@ export interface Project {
   code: string;
   description: string;
   image: string;
+  mobileImage: string;
   name: string;
   tags: string[];
   title: string;
@@ -20,6 +21,7 @@ const PROJECTS = [
     description:
       "Landing Page realizada para un abogado, con el fin de promocionar sus servicios y captar potenciales clientes. Con un enfoque en la elegancia, la seriedad y la velocidad de la pagina.",
     image: "/images/projects/rojo.webp",
+    mobileImage: "/images/projects/rojo-mobile.webp",
     tags: ["Astro", "TailwindCSS"],
     alt: "Imagen de la web de Abogado Rojo",
     title: "Imagen de la web de Abogado Rojo",
@@ -31,6 +33,7 @@ const PROJECTS = [
     description:
       "Landing Page realizada para mi Startup de Desarrollo Web, contiene renderizado del lado del servidor con Astro. También posee un formulario de contacto que envía un correo electrónico a mi bandeja de entrada.",
     image: "/images/projects/teclearla.webp",
+    mobileImage: "/images/projects/teclearla-mobile.webp",
     tags: ["NextJS", "TailwindCSS"],
     alt: "Imagen de la web de Teclearla",
     title: "Imagen de la web de Teclearla",
@@ -42,6 +45,7 @@ const PROJECTS = [
     description:
       "Aplicación que replica la técnica pomodoro para estudiar, trabajar o cualquier actividad que requiera concentración, podes agregar tareas y asignarles un tiempo de estudio y descanso.",
     image: "/images/projects/pomotech.webp",
+    mobileImage: "/images/projects/pomotech-mobile.webp",
     tags: ["NextJS", "TailwindCSS"],
     alt: "Imagen de la web de Pomotech",
     title: "Imagen de la web de Pomotech",
@@ -53,6 +57,8 @@ const PROJECTS = [
     description:
       "E-commerce de Tesla, podes visualizar productos, agregarlos al carrito de compras, realizar la compra via PayPal y ver el estado de tu pedido. Se permite la búsqueda por diversas categorías y distintos filtrados.",
     image: "/images/projects/tesla.webp",
+
+    mobileImage: "/images/projects/tesla-mobile.webp",
     tags: ["NextJS", "TailwindCSS"],
     alt: "Imagen de la web de Tesla Shop",
     title: "Imagen de la web de Tesla Shop",
@@ -63,8 +69,8 @@ const PROJECTS = [
 ---
 
 <Section
-  class="items-stretch w-full md:items-center container"
-  description="Algunos proyectos los cuales están construidos 100% por mi."
+  class="container items-stretch w-full md:items-center"
+  description="Proyectos que he realizado en el ultimo tiempo."
   descriptionClass="p-container"
   title="Proyectos"
   id={"projects"}
@@ -79,7 +85,7 @@ const PROJECTS = [
     <div class="md:p-container md:mt-12">
       <Image
         alt="Imágenes de todos los proyectos"
-        class="w-full h-full min-h-64 object-cover"
+        class="object-cover w-full h-full min-h-64"
         height={800}
         src="/images/projects/projects-full.webp"
         width={1280}

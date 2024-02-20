@@ -13,7 +13,8 @@ export interface Props {
 }
 
 const { project, isEven } = Astro.props;
-const { name, image, description, alt, title, tags, code, url } = project;
+const { name, image, description, alt, title, tags, code, url, mobileImage } =
+  project;
 ---
 
 <article
@@ -81,19 +82,30 @@ const { name, image, description, alt, title, tags, code, url } = project;
       class="w-full h-full transition-transform duration-500 ease-in-out transform lg:hover:scale-110"
     >
       <Image
-        width={500}
-        height={500}
+        width={420}
+        height={400}
         alt={alt}
         title={title}
         src={image}
-        class="w-full object-cover max-h-[300px] h-[400px] lg:h-full md:max-h-fit shadow-xl"
+        class="w-full object-cover max-h-[300px] h-[400px] lg:h-full md:max-h-fit shadow-xl hidden md:block"
         class:list={{
           "md:rounded-lg md:rounded-tr-none md:rounded-br-none": !isEven,
           "md:rounded-lg md:rounded-tl-none md:rounded-bl-none": isEven,
         }}
-      >
-        />
-      </Image>
+      />
+
+      <Image
+        width={420}
+        height={400}
+        alt={alt}
+        title={title}
+        src={mobileImage}
+        class="w-full object-cover max-h-[300px] h-[400px] lg:h-full md:max-h-fit shadow-xl md:hidden"
+        class:list={{
+          "md:rounded-lg md:rounded-tr-none md:rounded-br-none": !isEven,
+          "md:rounded-lg md:rounded-tl-none md:rounded-bl-none": isEven,
+        }}
+      />
     </div>
   </div>
 </article>

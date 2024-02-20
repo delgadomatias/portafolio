@@ -19,7 +19,7 @@ const formattedDate = formatDate(publishDate);
 ---
 
 <div
-  class="overflow-hidden rounded-md bg-primary-900 shadow-slate-200"
+  class="overflow-hidden rounded-md bg-[#fde047] shadow-slate-200"
   class:list={{
     "md:col-span-2": spanAll,
   }}
@@ -40,14 +40,14 @@ const formattedDate = formatDate(publishDate);
   </figure>
   <!-- Body-->
   <div class="p-6">
-    <header class="mb-4">
-      <Subtitle class="text-[#1e428f] font-black text-pretty">{title}</Subtitle>
+    <header class="grid gap-2 mb-4">
+      <Subtitle class="font-black text-black text-pretty">{title}</Subtitle>
       <time
-        class="text-sm uppercase tracking-wider font-semibold text-[#444444]"
+        class="text-sm font-semibold tracking-wider text-white uppercase opacity-60"
         >{formattedDate}</time
       >
     </header>
-    <Paragraph class="max-w-full font-semibold text-start text-black/60">
+    <Paragraph class="max-w-full font-semibold text-start text-white/75">
       {description}
     </Paragraph>
   </div>

@@ -40,18 +40,21 @@ const EXPERIENCE = [
 
 <Section
   title="Experiencia"
-  class="items-stretch gap-12 container"
+  class="container"
   id="experience"
+  description="Mi experiencia laboral y educativa."
 >
-  {
-    EXPERIENCE.map(({ title, items }) => {
-      return (
-        <ExperienceContainer title={title} items={items.length}>
-          {items.map((item) => {
-            return <ExperienceItem {...item} />;
-          })}
-        </ExperienceContainer>
-      );
-    })
-  }
+  <div class="flex flex-col gap-12 mt-8">
+    {
+      EXPERIENCE.map(({ title, items }) => {
+        return (
+          <ExperienceContainer title={title} items={items.length}>
+            {items.map((item) => {
+              return <ExperienceItem {...item} />;
+            })}
+          </ExperienceContainer>
+        );
+      })
+    }
+  </div>
 </Section>
