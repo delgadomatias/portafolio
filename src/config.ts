@@ -7,3 +7,7 @@ export const NAVBAR = {
     { href: "#blog", title: "Blog" },
   ],
 };
+
+export const SITE = {
+  url: "http://localhost:4321",
+};

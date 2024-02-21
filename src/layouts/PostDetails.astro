@@ -1,0 +1,77 @@
+---
+import Paragraph from "@components/text/Paragraph.astro";
+import Title from "@components/text/Title.astro";
+import LeftArrowIcon from "@icons/LeftArrowIcon.astro";
+import BlogNavbar from "@ui/BlogNavbar.astro";
+import CircleProfileImage from "@ui/CircleProfileImage.astro";
+import { formatDate } from "@utils/formatDate";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Layout from "./Layout.astro";
+import { SITE } from "config";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { slug } = post;
+const { title, publishDate, image, description } = post.data;
+const formattedDate = formatDate(publishDate);
+
+const layoutProps = {
+  title,
+  description,
+  ogImage: image.src,
+  canonicalUrl: `${SITE.url}/blog/${slug}`,
+  publishDate,
+};
+---
+
+<Layout {...layoutProps} type="article">
+  <BlogNavbar />
+  <main
+    class="container relative flex flex-col gap-8 pt-12 text-white p-container"
+  >
+    <section class="flex flex-col gap-4">
+      <div>
+        <div>
+          <button
+            class="flex items-center gap-2 focus-outline hover:opacity-75"
+            onclick="history.back()"
+          >
+            <LeftArrowIcon />
+            <span class="mb-1 text-xl">Volver</span>
+          </button>
+        </div>
+        <Title
+          class={"text-white tracking-wide !leading-relaxed font-junction font-black lg:text-5xl"}
+          transition:name={slug}>{title}</Title
+        >
+      </div>
+
+      <div class="inline-flex items-center justify-between">
+        <div class="inline-flex items-center gap-4">
+          <CircleProfileImage width={50} height={50} />
+          <Paragraph>Matias Delgado</Paragraph>
+        </div>
+
+        <time>{formattedDate}</time>
+      </div>
+    </section>
+    <Image
+      alt={image.alt}
+      class="w-full aspect-video"
+      height={600}
+      src={image.src}
+      width={800}
+    />
+
+    <div class="text-lg prose md:text-xl font-junction text-pretty">
+      <Content />
+    </div>
+  </main>
+</Layout>
+
+<style></style>

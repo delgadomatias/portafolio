@@ -16,9 +16,10 @@ const {
   data: { title, publishDate, description, image },
 } = post;
 const formattedDate = formatDate(publishDate);
+const dateTime = new Date(publishDate).toISOString().split("T")[0];
 ---
 
-<div
+<article
   class="overflow-hidden rounded-md bg-[#fde047] shadow-slate-200"
   class:list={{
     "md:col-span-2": spanAll,
@@ -28,7 +29,6 @@ const formattedDate = formatDate(publishDate);
   <figure>
     <a href={`/blog/${slug}`}>
       <Image
-        transition:name={slug}
         alt={image.alt}
         title={title}
         class="w-full md:aspect-video"
@@ -41,14 +41,16 @@ const formattedDate = formatDate(publishDate);
   <!-- Body-->
   <div class="p-6">
     <header class="grid gap-2 mb-4">
-      <Subtitle class="font-black text-black text-pretty">{title}</Subtitle>
+      <Subtitle class="font-black text-black text-pretty" transition:name={slug}
+        >{title}</Subtitle
+      >
       <time
         class="text-sm font-semibold tracking-wider text-black uppercase opacity-60"
-        >{formattedDate}</time
+        datetime={dateTime}>{formattedDate}</time
       >
     </header>
     <Paragraph class="max-w-full font-semibold text-start text-black/75">
       {description}
     </Paragraph>
   </div>
-</div>
+</article>

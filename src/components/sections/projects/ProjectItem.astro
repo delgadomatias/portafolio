@@ -13,7 +13,7 @@ export interface Props {
 }
 
 const { project, isEven } = Astro.props;
-const { name, image, description, alt, title, tags, code, url, mobileImage } =
+const { alt, code, mobileImage, tags, title, url, description, image, name } =
   project;
 ---
 
@@ -42,7 +42,7 @@ const { name, image, description, alt, title, tags, code, url, mobileImage } =
       <div class="flex flex-wrap items-center justify-center gap-2">
         <a
           href={url}
-          class="flex items-center gap-2 px-4 py-2 font-bold text-white bg-gray-800 rounded-xl"
+          class="flex items-center gap-2 px-4 py-2 font-bold text-white transition-colors duration-300 ease-in-out bg-gray-800 rounded-xl hover:bg-gray-900"
           target="_blank"
         >
           <WWWIcon class="w-6 h-6" />
@@ -51,7 +51,7 @@ const { name, image, description, alt, title, tags, code, url, mobileImage } =
 
         <a
           href={code}
-          class="flex items-center gap-2 px-4 py-2 font-bold text-white bg-gray-800 rounded-xl"
+          class="flex items-center gap-2 px-4 py-2 font-bold text-white transition-colors duration-300 ease-in-out bg-gray-800 rounded-xl hover:bg-gray-900"
           target="_blank"
         >
           <GithubIcon class="w-6 h-6 stroke-white" />

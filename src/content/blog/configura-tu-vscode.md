@@ -5,6 +5,5 @@ description: "No es lógico que en 2024 esté usando VSCode con las configuracio
 image:
   src: "/images/blogs/vscode.webp"
   alt: "Foto de mi VSCode"
-
 publishDate: 2021-07-09T12:00:00-00:00
 ---
