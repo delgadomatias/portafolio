@@ -8,5 +8,11 @@ import BlogContainer from "./BlogContainer.astro";
   class="items-stretch gap-12 container p-container"
   id={"blog"}
 >
-  <BlogContainer />
+  <BlogContainer>
+    <div class="flex md:col-span-2 justify-center md:justify-end">
+      <a href="/blog" class="text-white underline underline-offset-1"
+        >Ver todos</a
+      >
+    </div>
+  </BlogContainer>
 </Section>

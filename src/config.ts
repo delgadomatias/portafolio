@@ -10,4 +10,7 @@ export const NAVBAR = {
 
 export const SITE = {
   url: "http://localhost:4321",
+  blog: {
+    pagesPerSection: 2,
+  },
 };

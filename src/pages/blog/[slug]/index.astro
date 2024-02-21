@@ -1,16 +1,27 @@
 ---
+import Blog from "@layouts/Blog.astro";
 import PostDetails from "@layouts/PostDetails.astro";
+import { getPageNumbers } from "@utils/getPageNumbers";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
-  return blogEntries.map((entry) => ({
+  const slugPaths = blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
+
+  const numberPaths = getPageNumbers(blogEntries.length).map((number) => {
+    return {
+      params: { slug: number.toString() },
+    };
+  });
+
+  return [...numberPaths, ...slugPaths];
 }
 
 const { entry } = Astro.props;
+const { slug } = Astro.params;
 ---
 
-<PostDetails post={entry} />
+{entry ? <PostDetails post={entry} /> : <Blog page={slug} />}

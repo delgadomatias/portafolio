@@ -1,6 +1,6 @@
 ---
 import Paragraph from "@components/text/Paragraph.astro";
-import { NAVBAR, SITE } from "config";
+import { SITE } from "config";
 import CircleProfileImage from "./CircleProfileImage.astro";
 import Menu from "./Menu.astro";
 
@@ -82,30 +82,6 @@ const BLOG_LINKS = [
   }
 
   .visible {
-    @apply w-full h-screen pointer-events-auto top-[100%] opacity-100;
+    @apply w-full h-screen pointer-events-auto top-[99%] opacity-100;
   }
 </style>
-
-<script is:inline>
-  const menuButton = document.querySelector(".menu-btn");
-  const menuDiv = document.querySelector(".menu-div");
-  const menuFirstLine = document.querySelector(".menu-btn .first-line");
-  const menuSecondLine = document.querySelector(".menu-btn .second-line");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      setTimeout(() => {
-        menuDiv.classList.toggle("visible");
-        document.body.classList.remove("overflow-hidden");
-        menuFirstLine.classList.toggle("rotate-45");
-        menuSecondLine.classList.toggle("-rotate-45");
-      }, 50);
-    });
-  });
-
-  menuButton.addEventListener("click", () => {
-    menuDiv.classList.toggle("visible");
-    document.body.classList.toggle("overflow-hidden");
-  });
-</script>
