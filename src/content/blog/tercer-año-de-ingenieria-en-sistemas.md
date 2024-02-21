@@ -4,7 +4,7 @@ tags: ["Universidad"]
 description: "Una materia en especifico me hizo experimentar un crecimiento académico y personal."
 publishDate: 2021-07-16T12:00:00-00:00
 image:
-  src: "/images/roadmap.jpg"
+  src: "/images/blogs/roadmap.webp"
   alt: "Cosas que se estudian en Sistemas"
 ---
 

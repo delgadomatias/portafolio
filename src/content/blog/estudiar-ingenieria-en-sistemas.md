@@ -4,7 +4,7 @@ tags: ["Universidad"]
 description: "¿Vale la pena estudiar la carrera en 2024? ¿Cuales son los contenidos de la misma? ¿Estudio una tecnicatura en programación o la carrera?"
 publishDate: 2021-07-09T12:00:00-00:00
 image:
-  src: "/images/computadora.webp"
+  src: "/images/blogs/computadora.webp"
   alt: "Persona programando"
 ---
 

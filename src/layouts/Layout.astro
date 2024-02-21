@@ -10,11 +10,40 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es" data-theme="dark" class="scroll-smooth">
+<html lang="es" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta
+      name="description"
+      content="Soy Matias Delgado, un desarrollador de software con interés en el Frontend y Backend. Me gusta compartir conocimiento y aprender de los demás."
+    />
     <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#100720" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Matias Delgado" />
+    <meta
+      name="keywords"
+      content="Matias Delgado, Desarrollador, Frontend, Backend, Software, Web, Blog, Artículos, Tutoriales, Programación, JavaScript, TypeScript, React, Node.js, Svelte, Astro, TailwindCSS, Vercel, Netlify, GitHub"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content="Soy Matias Delgado, un desarrollador de software con interés en el Frontend y Backend. Me gusta compartir conocimiento y aprender de los demás."
+    />
+    <meta name="twitter:image" content="/images/profile-image.webp" />
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="Soy Matias Delgado, un desarrollador de software con interés en el Frontend y Backend. Me gusta compartir conocimiento y aprender de los demás."
+    />
+    <meta property="og:image" content="/images/profile-image.webp" />
+    <meta property="og:url" content="https://matiasdelgado.com.ar" />
+    <meta property="og:site_name" content="Matias Delgado" />
+    <meta property="og:type" content="website" />
+    <meta name="apple-mobile-web-app-title" content="Matias Delgado" />
+    <meta name="application-name" content="Matias Delgado" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <ViewTransitions />
@@ -69,6 +98,7 @@ const { title } = Astro.props;
       .prose h2 #table-of-contents {
         @apply mb-2;
       }
+
       .prose details {
         @apply inline-block cursor-pointer select-none;
       }
@@ -90,17 +120,16 @@ const { title } = Astro.props;
       }
 
       mark {
-        color: #61ff00;
         background: none;
-        font-weight: 600;
+        @apply text-[#61ff00]  font-semibold;
       }
 
       html {
-        scroll-padding-top: 100px;
+        @apply scroll-pt-24 scroll-smooth;
       }
 
       ::selection {
-        background-color: #000;
+        @apply bg-black;
       }
 
       /* Fonts */
@@ -150,7 +179,7 @@ const { title } = Astro.props;
 
         .prose {
           @apply prose-headings:!mb-3 prose-headings:!text-white
- prose-h3:italic prose-p:!text-white
+        prose-h3:italic prose-p:!text-white
     prose-a:!text-white prose-a:!decoration-dashed prose-a:underline-offset-8
     hover:prose-a:text-black prose-blockquote:border-l-yellow-300
     prose-blockquote:border-opacity-50 prose-blockquote:opacity-80

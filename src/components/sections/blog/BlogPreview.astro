@@ -31,7 +31,7 @@ const formattedDate = formatDate(publishDate);
         transition:name={slug}
         alt={image.alt}
         title={title}
-        class="w-full aspect-video"
+        class="w-full md:aspect-video"
         height={600}
         src={image.src}
         width={800}
@@ -43,11 +43,11 @@ const formattedDate = formatDate(publishDate);
     <header class="grid gap-2 mb-4">
       <Subtitle class="font-black text-black text-pretty">{title}</Subtitle>
       <time
-        class="text-sm font-semibold tracking-wider text-white uppercase opacity-60"
+        class="text-sm font-semibold tracking-wider text-black uppercase opacity-60"
         >{formattedDate}</time
       >
     </header>
-    <Paragraph class="max-w-full font-semibold text-start text-white/75">
+    <Paragraph class="max-w-full font-semibold text-start text-black/75">
       {description}
     </Paragraph>
   </div>
