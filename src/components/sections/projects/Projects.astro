@@ -10,10 +10,30 @@ export interface Project {
   image: string;
   mobileImage: string;
   name: string;
-  tags: string[];
+  tags: Tag[];
   title: string;
   url: string;
 }
+
+interface Tag {
+  name: string;
+  class: string;
+}
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+  },
+  ASTRO: {
+    name: "Astro",
+    class: "!text-black bg-[#FFFFFF] text-white",
+  },
+};
 
 const PROJECTS = [
   {
@@ -22,7 +42,7 @@ const PROJECTS = [
       "Landing Page realizada para un abogado, con el fin de promocionar sus servicios y captar potenciales clientes. Con un enfoque en la elegancia, la seriedad y la velocidad de la pagina.",
     image: "/images/projects/rojo.webp",
     mobileImage: "/images/projects/rojo-mobile.webp",
-    tags: ["Astro", "TailwindCSS"],
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
     alt: "Imagen de la web de Abogado Rojo",
     title: "Imagen de la web de Abogado Rojo",
     url: "https://www.abogadorojo.com",
@@ -34,7 +54,7 @@ const PROJECTS = [
       "Landing Page realizada para mi Startup de Desarrollo Web, contiene renderizado del lado del servidor con Astro. También posee un formulario de contacto que envía un correo electrónico a mi bandeja de entrada.",
     image: "/images/projects/teclearla.webp",
     mobileImage: "/images/projects/teclearla-mobile.webp",
-    tags: ["NextJS", "TailwindCSS"],
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
     alt: "Imagen de la web de Teclearla",
     title: "Imagen de la web de Teclearla",
     url: "https://www.teclearla.com.ar",
@@ -46,7 +66,7 @@ const PROJECTS = [
       "Aplicación que replica la técnica pomodoro para estudiar, trabajar o cualquier actividad que requiera concentración, podes agregar tareas y asignarles un tiempo de estudio y descanso.",
     image: "/images/projects/pomotech.webp",
     mobileImage: "/images/projects/pomotech-mobile.webp",
-    tags: ["NextJS", "TailwindCSS"],
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
     alt: "Imagen de la web de Pomotech",
     title: "Imagen de la web de Pomotech",
     url: "https://pomotech.vercel.app/",
@@ -59,7 +79,7 @@ const PROJECTS = [
     image: "/images/projects/tesla.webp",
 
     mobileImage: "/images/projects/tesla-mobile.webp",
-    tags: ["NextJS", "TailwindCSS"],
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
     alt: "Imagen de la web de Tesla Shop",
     title: "Imagen de la web de Tesla Shop",
     url: "https://teslashop.vercel.app/",

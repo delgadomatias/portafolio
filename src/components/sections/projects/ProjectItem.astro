@@ -13,7 +13,7 @@ export interface Props {
 }
 
 const { project, isEven } = Astro.props;
-const { alt, code, mobileImage, tags, title, url, description, image, name } =
+const { alt, code, mobileImage, title, tags, url, description, image, name } =
   project;
 ---
 
@@ -35,7 +35,7 @@ const { alt, code, mobileImage, tags, title, url, description, image, name } =
       <div class="flex flex-wrap items-center justify-center gap-2">
         {
           tags.map((tag) => {
-            return <Pill>{tag}</Pill>;
+            return <Pill class={tag.class}>{tag.name}</Pill>;
           })
         }
       </div>
@@ -82,8 +82,8 @@ const { alt, code, mobileImage, tags, title, url, description, image, name } =
       class="w-full h-full transition-transform duration-500 ease-in-out transform lg:hover:scale-110"
     >
       <Image
-        width={420}
-        height={400}
+        width={840}
+        height={800}
         alt={alt}
         title={title}
         src={image}
@@ -95,8 +95,8 @@ const { alt, code, mobileImage, tags, title, url, description, image, name } =
       />
 
       <Image
-        width={420}
-        height={400}
+        width={840}
+        height={800}
         alt={alt}
         title={title}
         src={mobileImage}

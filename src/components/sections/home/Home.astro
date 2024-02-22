@@ -18,17 +18,36 @@ import SocialLinks from "@components/ui/SocialLinks.astro";
 
   <div class="flex flex-col items-center gap-6 mt-6">
     <!-- Paragraph -->
-    <Paragraph>
-      Soy un desarrollador con más afinidad en el Frontend pero con
-      conocimientos en el área del Backend. Me gusta aprender cosas nuevas y
-      compartir conocimientos. Desarrollo proyectos de manera Freelancer a
-      través de <a
-        title="Web de Teclearla"
-        target="_blank"
-        href="https://www.teclearla.com.ar"
-        class="underline">Teclearla</a
+    <div class="block sm:hidden">
+      <Paragraph>
+        Soy un desarrollador con más afinidad en el Frontend pero con
+        conocimientos en el área del Backend.
+      </Paragraph>
+
+      <Paragraph
+        >Me gusta aprender cosas nuevas y compartir conocimientos. Desarrollo
+        proyectos de manera Freelancer a través de <a
+          title="Web de Teclearla"
+          target="_blank"
+          href="https://www.teclearla.com.ar"
+          class="underline">Teclearla</a
+        ></Paragraph
       >
-    </Paragraph>
+    </div>
+
+    <div class="hidden sm:block">
+      <Paragraph>
+        Soy un desarrollador con más afinidad en el Frontend pero con
+        conocimientos en el área del Backend. Me gusta aprender cosas nuevas y
+        compartir conocimientos. Desarrollo proyectos de manera Freelancer a
+        través de <a
+          title="Web de Teclearla"
+          target="_blank"
+          href="https://www.teclearla.com.ar"
+          class="underline">Teclearla</a
+        >
+      </Paragraph>
+    </div>
 
     <!-- Social Links -->
     <SocialLinks />
