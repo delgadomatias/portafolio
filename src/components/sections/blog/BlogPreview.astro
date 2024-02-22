@@ -2,7 +2,6 @@
 import Paragraph from "@components/text/Paragraph.astro";
 import Subtitle from "@components/text/Subtitle.astro";
 import { formatDate } from "@utils/formatDate";
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 
 export interface Props {
@@ -25,32 +24,22 @@ const dateTime = new Date(publishDate).toISOString().split("T")[0];
     "md:col-span-2": spanAll,
   }}
 >
-  <!-- Image -->
-  <figure>
-    <a href={`/blog/${slug}`}>
-      <Image
-        alt={image.alt}
-        title={title}
-        class="w-full md:aspect-video"
-        height={600}
-        src={image.src}
-        width={800}
-      />
-    </a>
-  </figure>
-  <!-- Body-->
-  <div class="p-6">
-    <header class="grid gap-2 mb-4">
-      <Subtitle class="font-black text-black text-pretty" transition:name={slug}
-        >{title}</Subtitle
-      >
-      <time
-        class="text-sm font-semibold tracking-wider text-black uppercase opacity-60"
-        datetime={dateTime}>{formattedDate}</time
-      >
-    </header>
-    <Paragraph class="max-w-full font-semibold text-start text-black/75">
-      {description}
-    </Paragraph>
-  </div>
+  <a href={`/blog/${slug}`}>
+    <div class="p-6">
+      <header class="grid gap-2 mb-4">
+        <Subtitle
+          class="font-black text-black text-pretty"
+          transition:name={slug}>{title}</Subtitle
+        >
+        <time
+          class="text-sm font-semibold tracking-wider text-black uppercase opacity-60"
+          datetime={dateTime}>{formattedDate}</time
+        >
+      </header>
+
+      <Paragraph class="max-w-full font-semibold text-start text-black/75">
+        {description}
+      </Paragraph>
+    </div>
+  </a>
 </article>

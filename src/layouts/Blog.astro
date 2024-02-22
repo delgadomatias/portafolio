@@ -1,8 +1,10 @@
 ---
 import Section from "@components/layout/Section.astro";
 import BlogPreview from "@components/sections/blog/BlogPreview.astro";
+import Pagination from "@components/shared/Pagination.astro";
 import BlogNavbar from "@components/ui/BlogNavbar.astro";
 import Layout from "@layouts/Layout.astro";
+import { getPagination } from "@utils/getPagination";
 import { getSortedPosts } from "@utils/getSortedPosts";
 import { getCollection } from "astro:content";
 import { SITE } from "config";
@@ -18,10 +20,14 @@ const layoutProps = {
   canonicalUrl: SITE.url + "/blogs",
 };
 
-const BLOGS = await getCollection("blog");
-const sortedPosts = getSortedPosts(BLOGS);
 const { page } = Astro.props;
-console.log(page);
+const POSTS = await getCollection("blog");
+const sortedPosts = getSortedPosts(POSTS);
+
+const { paginatedPosts, totalPages } = getPagination({
+  page,
+  posts: sortedPosts,
+});
 ---
 
 <Layout {...layoutProps}>
@@ -34,13 +40,15 @@ console.log(page);
     <div class="pt-8">
       <div class="grid gap-4 md:grid-cols-2">
         {
-          sortedPosts.map((blog, index) => {
+          paginatedPosts.map((blog, index) => {
             const spanAll =
-              sortedPosts.length % 2 !== 0 && index === sortedPosts.length - 1;
+              (paginatedPosts.length % 2 !== 0 &&
+                index === paginatedPosts.length - 1) ||
+              paginatedPosts.length === 1;
             return <BlogPreview post={blog} spanAll={spanAll} />;
           })
         }
-        <slot />
+        <Pagination currentPage={Number(page)} totalPages={totalPages} />
       </div>
     </div>
   </Section>
