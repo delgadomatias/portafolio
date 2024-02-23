@@ -3,8 +3,10 @@ import FacebookIcon from "@components/icons/FacebookIcon.astro";
 import MailIcon from "@components/icons/MailIcon.astro";
 import TwitterIcon from "@components/icons/TwitterIcon.astro";
 import WhatsappIcon from "@components/icons/WhatsappIcon.astro";
+import { SITE } from "config";
 
-const URL = Astro.url;
+const { pathname } = Astro.url;
+const URL = encodeURIComponent(`${SITE.url}${pathname}`);
 
 const shareLinks = [
   {
