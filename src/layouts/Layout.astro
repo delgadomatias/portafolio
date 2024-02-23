@@ -1,26 +1,63 @@
 ---
-import Navbar from "@components/ui/Navbar.astro";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
+  description: string;
+  ogImage: string;
+  canonicalUrl: string;
+  type?: "website" | "article";
+  publishDate?: Date;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description,
+  ogImage,
+  canonicalUrl,
+  type = "website",
+  publishDate,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#100720" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Matias Delgado" />
+    <meta
+      name="keywords"
+      content="Matias Delgado, Desarrollador, Frontend, Backend, Software, Web, Blog, Artículos, Tutoriales, Programación, JavaScript, TypeScript, React, Node.js, Svelte, Astro, TailwindCSS, Vercel, Netlify, GitHub"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:type" content={type} />
+    {
+      publishDate && (
+        <meta
+          property="article:published_time"
+          content={publishDate.toISOString()}
+        />
+      )
+    }
+
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="relative overflow-x-hidden bg-primary">
-    <Navbar />
+  <body class="relative overflow-x-hidden bg-primary-950">
     <slot />
 
     <style is:global>
@@ -30,6 +67,10 @@ const { title } = Astro.props;
       @tailwind base;
       @tailwind components;
       @tailwind utilities;
+
+      kbd {
+        @apply bg-black !text-white;
+      }
 
       code,
       blockquote {
@@ -41,11 +82,11 @@ const { title } = Astro.props;
       }
 
       .prose pre {
-        @apply rounded-md;
+        @apply rounded-md py-4 px-0;
       }
 
       .prose code {
-        @apply w-full block p-2;
+        @apply w-full block text-base;
       }
 
       .prose hr {
@@ -69,6 +110,7 @@ const { title } = Astro.props;
       .prose h2 #table-of-contents {
         @apply mb-2;
       }
+
       .prose details {
         @apply inline-block cursor-pointer select-none;
       }
@@ -90,17 +132,18 @@ const { title } = Astro.props;
       }
 
       mark {
-        color: #61ff00;
         background: none;
-        font-weight: 600;
+        @apply text-[#61ff00]  font-semibold;
       }
 
       html {
-        scroll-padding-top: 100px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--text-color-primary) #161719;
+        @apply scroll-pt-24 scroll-smooth;
       }
 
       ::selection {
-        background-color: #000;
+        @apply bg-black;
       }
 
       /* Fonts */
@@ -148,10 +191,14 @@ const { title } = Astro.props;
           @apply hidden;
         }
 
+        .prose details a {
+          @apply !decoration-dashed underline-offset-8;
+        }
+
         .prose {
           @apply prose-headings:!mb-3 prose-headings:!text-white
- prose-h3:italic prose-p:!text-white
-    prose-a:!text-white prose-a:!decoration-dashed prose-a:underline-offset-8
+        prose-h3:italic prose-p:!text-white
+    prose-a:!text-white prose-a:underline prose-a:underline-offset-0
     hover:prose-a:text-black prose-blockquote:border-l-yellow-300
     prose-blockquote:border-opacity-50 prose-blockquote:opacity-80
     prose-figcaption:!text-white prose-figcaption:opacity-70
@@ -159,7 +206,7 @@ const { title } = Astro.props;
 
     
     prose-code:rounded 
-    prose-code:bg-opacity-75 prose-code:p-1 
+    prose-code:bg-opacity-75 prose-code:p-0
     prose-code:before:!content-[''] prose-code:after:!content-['']
     prose-ol:!text-white 
     prose-ul:overflow-x-clip prose-ul:!text-white prose-li:marker:!text-yellow-400

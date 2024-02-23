@@ -13,7 +13,8 @@ export interface Props {
 }
 
 const { project, isEven } = Astro.props;
-const { name, image, description, alt, title, tags, code, url } = project;
+const { alt, code, mobileImage, title, tags, url, description, image, name } =
+  project;
 ---
 
 <article
@@ -34,14 +35,14 @@ const { name, image, description, alt, title, tags, code, url } = project;
       <div class="flex flex-wrap items-center justify-center gap-2">
         {
           tags.map((tag) => {
-            return <Pill>{tag}</Pill>;
+            return <Pill class={tag.class}>{tag.name}</Pill>;
           })
         }
       </div>
       <div class="flex flex-wrap items-center justify-center gap-2">
         <a
           href={url}
-          class="flex items-center gap-2 px-4 py-2 font-bold text-white bg-gray-800 rounded-xl"
+          class="flex items-center gap-2 px-4 py-2 font-bold text-white transition-colors duration-300 ease-in-out bg-gray-800 rounded-xl hover:bg-gray-900"
           target="_blank"
         >
           <WWWIcon class="w-6 h-6" />
@@ -50,7 +51,7 @@ const { name, image, description, alt, title, tags, code, url } = project;
 
         <a
           href={code}
-          class="flex items-center gap-2 px-4 py-2 font-bold text-white bg-gray-800 rounded-xl"
+          class="flex items-center gap-2 px-4 py-2 font-bold text-white transition-colors duration-300 ease-in-out bg-gray-800 rounded-xl hover:bg-gray-900"
           target="_blank"
         >
           <GithubIcon class="w-6 h-6 stroke-white" />
@@ -81,19 +82,30 @@ const { name, image, description, alt, title, tags, code, url } = project;
       class="w-full h-full transition-transform duration-500 ease-in-out transform lg:hover:scale-110"
     >
       <Image
-        width={500}
-        height={500}
+        width={840}
+        height={800}
         alt={alt}
         title={title}
         src={image}
-        class="w-full object-cover max-h-[300px] h-[400px] lg:h-full md:max-h-fit shadow-xl"
+        class="w-full object-cover max-h-[300px] h-[400px] lg:h-full md:max-h-fit shadow-xl hidden md:block"
         class:list={{
           "md:rounded-lg md:rounded-tr-none md:rounded-br-none": !isEven,
           "md:rounded-lg md:rounded-tl-none md:rounded-bl-none": isEven,
         }}
-      >
-        />
-      </Image>
+      />
+
+      <Image
+        width={840}
+        height={800}
+        alt={alt}
+        title={title}
+        src={mobileImage}
+        class="w-full object-cover max-h-[300px] h-[400px] lg:h-full md:max-h-fit shadow-xl md:hidden"
+        class:list={{
+          "md:rounded-lg md:rounded-tr-none md:rounded-br-none": !isEven,
+          "md:rounded-lg md:rounded-tl-none md:rounded-bl-none": isEven,
+        }}
+      />
     </div>
   </div>
 </article>

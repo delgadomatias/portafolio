@@ -1,17 +1,38 @@
 ---
+import GithubIcon from "@icons/GithubIcon.astro";
+import InstagramIcon from "@icons/InstagramIcon.astro";
+import MailIcon from "@icons/MailIcon.astro";
+import CircleProfileImage from "@ui/CircleProfileImage.astro";
 import { NAVBAR } from "config";
-import GithubIcon from "../icons/GithubIcon.astro";
-import InstagramIcon from "../icons/InstagramIcon.astro";
-import MailIcon from "../icons/MailIcon.astro";
+
+const currentYear = new Date().getFullYear();
 ---
 
 <footer
-  class="container grid pt-4 pb-24 mt-24 text-white sm:justify-between place-content-center sm:grid-cols-2 p-container"
+  class="container grid gap-12 pt-4 pb-32 md:pb-24 mt-8 md:mt-24 text-white sm:justify-between place-content-center sm:grid-cols-2 p-container"
 >
-  <ul class="grid md:col-span-1">
-    <li><h1>Matias Delgado</h1></li>
+  <ul class="grid md:col-span-1 order-2 md:order-1">
+    <li
+      class="flex gap-6 items-center text-center md:text-start md:items-start flex-col justify-between"
+    >
+      <div class="inline-flex gap-4 items-center">
+        <CircleProfileImage width={60} height={60} />
+        <h1>Matias Delgado</h1>
+      </div>
+      <p>
+        Matias Delgado, desarrollador web y estudiante de Ingeniería en
+        Sistemas. Si todo sale bien, en poco mas de dos años me recibo.
+        Aprendiendo constantemente y siempre buscando mejorar.
+      </p>
+      <p class="opacity-70">
+        Matias Delgado {currentYear}, gracias por visitar.
+      </p>
+    </li>
   </ul>
-  <ul class="grid items-center justify-end gap-1 md:col-span-1">
+
+  <ul
+    class="grid items-center md:justify-end gap-1 md:col-span-1 order-1 md:order-2 justify-center text-center md:text-start"
+  >
     <li class="mb-4">
       <h2 class="text-2xl font-semibold uppercase">Links rápidos</h2>
     </li>
@@ -26,7 +47,7 @@ import MailIcon from "../icons/MailIcon.astro";
         );
       })
     }
-    <li class="flex gap-2 mt-4">
+    <li class="flex gap-2 mt-4 justify-center md:justify-start">
       <a
         href="https://www.instagram.com/mmatidelga2"
         title="Instagram de Matias Delgado"

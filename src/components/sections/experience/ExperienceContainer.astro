@@ -12,12 +12,12 @@ const { title, items } = Astro.props;
   <Subtitle>{title}</Subtitle>
   <article class="text-white grid grid-cols-[10%_90%] auto-rows-auto mt-6">
     <div class="h-full bg-white/[0.5] w-[3px] relative">
-      <div class="absolute h-full w-full flex-col flex items-center gap-8">
+      <div class="absolute flex flex-col items-center w-full h-full gap-8">
         {
           Array.from({ length: items }).map(() => {
             return (
-              <div class="flex-1 flex items-center justify-between  ">
-                <div class="h-6 w-6 rounded-full bg-white border-4 border-paragraphHighlight" />
+              <div class="flex items-center justify-between flex-1 ">
+                <div class="w-6 h-6 bg-white border-4 rounded-full border-paragraphHighlight" />
               </div>
             );
           })

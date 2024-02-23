@@ -1,0 +1,55 @@
+---
+import Section from "@components/layout/Section.astro";
+import BlogPreview from "@components/sections/blog/BlogPreview.astro";
+import Pagination from "@components/shared/Pagination.astro";
+import BlogNavbar from "@components/ui/BlogNavbar.astro";
+import Layout from "@layouts/Layout.astro";
+import { getPagination } from "@utils/getPagination";
+import { getSortedPosts } from "@utils/getSortedPosts";
+import { getCollection } from "astro:content";
+import { SITE } from "config";
+
+export interface Props {
+  page: string;
+}
+
+const layoutProps = {
+  title: "Blogs | Matias Delgado",
+  description: "Todos los artículos que he publicado",
+  ogImage: "/images/profile-image.webp",
+  canonicalUrl: SITE.url + "/blogs",
+};
+
+const { page } = Astro.props;
+const POSTS = await getCollection("blog");
+const sortedPosts = getSortedPosts(POSTS);
+
+const { paginatedPosts, totalPages } = getPagination({
+  page,
+  posts: sortedPosts,
+});
+---
+
+<Layout {...layoutProps}>
+  <BlogNavbar />
+  <Section
+    title="Blogs"
+    description="Todos los artículos que he publicado"
+    class="container p-container pt-8"
+  >
+    <div class="pt-8">
+      <div class="grid gap-4 md:grid-cols-2">
+        {
+          paginatedPosts.map((blog, index) => {
+            const spanAll =
+              (paginatedPosts.length % 2 !== 0 &&
+                index === paginatedPosts.length - 1) ||
+              paginatedPosts.length === 1;
+            return <BlogPreview post={blog} spanAll={spanAll} />;
+          })
+        }
+        <Pagination currentPage={Number(page)} totalPages={totalPages} />
+      </div>
+    </div>
+  </Section>
+</Layout>

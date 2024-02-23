@@ -1,0 +1,132 @@
+---
+import Paragraph from "@components/text/Paragraph.astro";
+import Title from "@components/text/Title.astro";
+import LeftArrowIcon from "@icons/LeftArrowIcon.astro";
+import BlogNavbar from "@ui/BlogNavbar.astro";
+import CircleProfileImage from "@ui/CircleProfileImage.astro";
+import { formatDate } from "@utils/formatDate";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Layout from "./Layout.astro";
+import { SITE } from "config";
+import PostFooter from "@components/shared/PostFooter.astro";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { slug } = post;
+const { title, publishDate, image, description } = post.data;
+const formattedDate = formatDate(publishDate);
+
+const layoutProps = {
+  title,
+  description,
+  ogImage: image.src,
+  canonicalUrl: `${SITE.url}/blog/${slug}`,
+  publishDate,
+};
+---
+
+<Layout {...layoutProps} type="article">
+  <BlogNavbar />
+  <main
+    class="container relative flex flex-col gap-8 pt-12 text-white p-container"
+  >
+    <section class="flex flex-col gap-4">
+      <div>
+        <div>
+          <button
+            class="flex items-center gap-2 focus-outline hover:opacity-75"
+            onclick="history.back()"
+          >
+            <LeftArrowIcon />
+            <span class="mb-1 text-xl">Volver</span>
+          </button>
+        </div>
+        <Title
+          class={"text-white tracking-wide !leading-relaxed font-junction font-black lg:text-5xl"}
+          transition:name={slug}>{title}</Title
+        >
+      </div>
+
+      <div class="hidden md:inline-flex items-center justify-between">
+        <div class="inline-flex items-center gap-4">
+          <CircleProfileImage width={50} height={50} />
+          <Paragraph>Matias Delgado</Paragraph>
+        </div>
+
+        <time>{formattedDate}</time>
+      </div>
+
+      <div class="flex md:hidden">
+        <div class="inline-flex gap-4 justify-between w-full">
+          <CircleProfileImage width={50} height={50} />
+          <div class="flex flex-col items-end">
+            <Paragraph>Matias Delgado</Paragraph>
+            <time>{formattedDate}</time>
+          </div>
+        </div>
+      </div>
+    </section>
+    <Image
+      alt={image.alt}
+      class="w-full aspect-video"
+      height={600}
+      src={image.src}
+      width={800}
+    />
+
+    <div
+      class="text-lg prose md:text-xl font-junction text-pretty mb-8 max-w-full"
+    >
+      <Content />
+    </div>
+  </main>
+  <PostFooter />
+</Layout>
+
+<script is:inline>
+  function attachCopyButtons() {
+    let copyButtonLabel = "Copiar";
+    let codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+    for (let codeBlock of codeBlocks) {
+      let wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      let copyButton = document.createElement("button");
+      copyButton.className =
+        "copy-code absolute right-3 -top-3 rounded bg-white px-2 py-1 text-xs leading-4 text-black font-medium";
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      // wrap codebock with relative parent element
+      codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      let code = block.querySelector("code");
+      let text = code.innerText;
+
+      await navigator.clipboard.writeText(text);
+
+      // visual feedback that task is completed
+      button.innerText = "Copiado";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+  attachCopyButtons();
+  document.addEventListener("astro:after-swap", attachCopyButtons);
+</script>

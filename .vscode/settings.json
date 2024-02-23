@@ -22,5 +22,8 @@
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "window.zoomLevel": 2
+  "window.zoomLevel": 2,
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  }
 }

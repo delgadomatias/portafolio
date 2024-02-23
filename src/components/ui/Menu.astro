@@ -1,0 +1,41 @@
+<button
+  class="relative grid w-5 h-5 gap-1 menu-btn"
+  onclick="toggleMenu()"
+  title="Abrir menu de navegación"
+>
+  <p class="sr-only">Abrir menu</p>
+  <div class="w-full h-0.5 bg-white first-line absolute top-[20%]"></div>
+  <div class="w-full h-0.5 bg-white second-line absolute bottom-[20%]"></div>
+</button>
+
+<script is:inline>
+  function toggleMenu() {
+    const firstLine = document.querySelector(".first-line");
+    const secondLine = document.querySelector(".second-line");
+
+    firstLine.classList.toggle("rotate-45");
+    secondLine.classList.toggle("-rotate-45");
+  }
+</script>
+
+<style>
+  .first-line {
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+  }
+
+  .second-line {
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+  }
+
+  .first-line.rotate-45 {
+    transform: rotate(45deg);
+    top: calc(50% - 0.125rem);
+  }
+
+  .second-line.-rotate-45 {
+    transform: rotate(-45deg);
+    bottom: 50%;
+  }
+</style>

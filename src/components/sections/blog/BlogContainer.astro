@@ -4,10 +4,10 @@ import { getCollection } from "astro:content";
 import BlogPreview from "./BlogPreview.astro";
 
 const BLOGS = await getCollection("blog");
-const sortedPosts = getSortedPosts(BLOGS);
+const sortedPosts = getSortedPosts(BLOGS).slice(0, 3);
 ---
 
-<article class="grid md:grid-cols-2 gap-4">
+<div class="grid gap-4 md:grid-cols-2">
   {
     sortedPosts.map((blog, index) => {
       const spanAll =
@@ -15,4 +15,5 @@ const sortedPosts = getSortedPosts(BLOGS);
       return <BlogPreview post={blog} spanAll={spanAll} />;
     })
   }
-</article>
+  <slot />
+</div>

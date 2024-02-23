@@ -1,6 +1,16 @@
+---
+import { cn } from "@utils/cn";
+import type { HTMLAttributes } from "astro/types";
+
+export interface Props extends HTMLAttributes<"div"> {}
+const { class: className } = Astro.props;
+---
+
 <div
-  class="text-white py-1 px-3 rounded-xl text-xs font-bold select-none"
-  style="background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);"
+  class={cn(
+    "text-white py-1 px-3 rounded-xl text-xs font-bold select-none",
+    className
+  )}
 >
   <slot />
 </div>

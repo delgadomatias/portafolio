@@ -2,53 +2,55 @@
 import Paragraph from "@components/text/Paragraph.astro";
 import Subtitle from "@components/text/Subtitle.astro";
 import Title from "@components/text/Title.astro";
-import CircleImageWithWrap from "@components/ui/CircleImageWithWrap.astro";
-import CircleProfileImage from "@components/ui/CircleProfileImage.astro";
 import PrimaryAnchor from "@components/ui/PrimaryAnchor.astro";
 import SocialLinks from "@components/ui/SocialLinks.astro";
-import DownArrowIcon from "@icons/DownArrowIcon.astro";
 ---
 
 <section
-  class="relative flex flex-col items-center justify-center gap-4 pt-8 pb-8 min-h-screenMinusNavbar p-container"
+  class="relative flex flex-col items-center justify-center px-8 py-16 bg-primarySlate min-h-screenMinusNavbar sm:min-h-fit"
   id="home"
 >
-  <div class="absolute bottom-0 pb-1" id="down-arrow">
-    <DownArrowIcon />
-  </div>
-
-  <CircleImageWithWrap>
-    <CircleProfileImage
-      class="h-[150px] w-[150px] md:w-[250px] md:h-[250px]"
-      height={250}
-      width={250}
-    />
-  </CircleImageWithWrap>
-
   <!-- Header -->
-  <header class="flex flex-col md:gap-2">
-    <Subtitle>Hola, soy</Subtitle>
-    <Title>Matias Delgado</Title>
-  </header>
+  <Title class="text-5xl text-center md:text-6xl lg:text-7xl"
+    >Matias Delgado</Title
+  >
+  <Subtitle class="text-center lg:text-5xl">Desarrollador de Software</Subtitle>
 
-  <!-- Paragraph -->
-  <Paragraph>
-    Programador Frontend. Mi principal interés se centra en la creación de
-    páginas web estéticas y funcionales a traves de NextJS.
-  </Paragraph>
+  <div class="flex flex-col items-center gap-6 mt-6">
+    <!-- Paragraph -->
+    <div class="block sm:hidden">
+      <Paragraph>
+        Soy un desarrollador con más afinidad en el Frontend pero con
+        conocimientos en el área del Backend.
+      </Paragraph>
 
-  <!-- Social Links -->
-  <SocialLinks />
+      <Paragraph
+        >Me gusta aprender cosas nuevas y compartir conocimientos. Desarrollo
+        proyectos de manera Freelancer a través de <a
+          title="Web de Teclearla"
+          target="_blank"
+          href="https://www.teclearla.com.ar"
+          class="underline">Teclearla</a
+        ></Paragraph
+      >
+    </div>
 
-  <div class="mt-8">
-    <PrimaryAnchor href="#">Contacto</PrimaryAnchor>
+    <div class="hidden sm:block">
+      <Paragraph>
+        Soy un desarrollador con más afinidad en el Frontend pero con
+        conocimientos en el área del Backend. Me gusta aprender cosas nuevas y
+        compartir conocimientos. Desarrollo proyectos de manera Freelancer a
+        través de <a
+          title="Web de Teclearla"
+          target="_blank"
+          href="https://www.teclearla.com.ar"
+          class="underline">Teclearla</a
+        >
+      </Paragraph>
+    </div>
+
+    <!-- Social Links -->
+    <SocialLinks />
+    <PrimaryAnchor href="mailto:mmatidelga2@gmail.com">Contacto</PrimaryAnchor>
   </div>
 </section>
-
-<style>
-  @media screen and (max-height: 768px) {
-    #down-arrow {
-      @apply hidden;
-    }
-  }
-</style>

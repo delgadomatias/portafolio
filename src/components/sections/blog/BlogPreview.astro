@@ -2,7 +2,6 @@
 import Paragraph from "@components/text/Paragraph.astro";
 import Subtitle from "@components/text/Subtitle.astro";
 import { formatDate } from "@utils/formatDate";
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 
 export interface Props {
@@ -16,39 +15,31 @@ const {
   data: { title, publishDate, description, image },
 } = post;
 const formattedDate = formatDate(publishDate);
+const dateTime = new Date(publishDate).toISOString().split("T")[0];
 ---
 
-<div
-  class="overflow-hidden bg-[#f4b168] rounded-md shadow-slate-200"
+<article
+  class="overflow-hidden rounded-md bg-[#fde047] shadow-slate-200"
   class:list={{
     "md:col-span-2": spanAll,
   }}
 >
-  <!-- Image -->
-  <figure>
-    <a href={`/blog/${slug}`}>
-      <Image
-        transition:name={slug}
-        alt={image.alt}
-        title={title}
-        class="w-full aspect-video"
-        height={600}
-        src={image.src}
-        width={800}
-      />
-    </a>
-  </figure>
-  <!-- Body-->
-  <div class="p-6">
-    <header class="mb-4">
-      <Subtitle class="text-[#1e428f] font-black text-pretty">{title}</Subtitle>
-      <time
-        class="text-sm uppercase tracking-wider font-semibold text-[#444444]"
-        >{formattedDate}</time
-      >
-    </header>
-    <Paragraph class="max-w-full font-semibold text-start text-black/60">
-      {description}
-    </Paragraph>
-  </div>
-</div>
+  <a href={`/blog/${slug}`}>
+    <div class="p-6">
+      <header class="grid gap-2 mb-4">
+        <Subtitle
+          class="font-black text-black text-pretty"
+          transition:name={slug}>{title}</Subtitle
+        >
+        <time
+          class="text-sm font-semibold tracking-wider text-black uppercase opacity-60"
+          datetime={dateTime}>{formattedDate}</time
+        >
+      </header>
+
+      <Paragraph class="max-w-full font-semibold text-start text-black/75">
+        {description}
+      </Paragraph>
+    </div>
+  </a>
+</article>
