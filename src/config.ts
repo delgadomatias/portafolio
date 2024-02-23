@@ -9,7 +9,7 @@ export const NAVBAR = {
 };
 
 export const SITE = {
-  url: "http://localhost:4321",
+  url: "https://www.matiasdelgado.com.ar",
   blog: {
     pagesPerSection: 3,
   },
