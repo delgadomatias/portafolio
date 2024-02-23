@@ -68,6 +68,10 @@ const {
       @tailwind components;
       @tailwind utilities;
 
+      kbd {
+        @apply bg-black !text-white;
+      }
+
       code,
       blockquote {
         word-wrap: break-word;
@@ -78,11 +82,11 @@ const {
       }
 
       .prose pre {
-        @apply rounded-md;
+        @apply rounded-md py-4 px-0;
       }
 
       .prose code {
-        @apply w-full block p-2;
+        @apply w-full block text-base;
       }
 
       .prose hr {
@@ -187,10 +191,14 @@ const {
           @apply hidden;
         }
 
+        .prose details a {
+          @apply !decoration-dashed underline-offset-8;
+        }
+
         .prose {
           @apply prose-headings:!mb-3 prose-headings:!text-white
         prose-h3:italic prose-p:!text-white
-    prose-a:!text-white prose-a:!decoration-dashed prose-a:underline-offset-8
+    prose-a:!text-white prose-a:underline prose-a:underline-offset-0
     hover:prose-a:text-black prose-blockquote:border-l-yellow-300
     prose-blockquote:border-opacity-50 prose-blockquote:opacity-80
     prose-figcaption:!text-white prose-figcaption:opacity-70
@@ -198,7 +206,7 @@ const {
 
     
     prose-code:rounded 
-    prose-code:bg-opacity-75 prose-code:p-1 
+    prose-code:bg-opacity-75 prose-code:p-0
     prose-code:before:!content-[''] prose-code:after:!content-['']
     prose-ol:!text-white 
     prose-ul:overflow-x-clip prose-ul:!text-white prose-li:marker:!text-yellow-400

@@ -9,6 +9,7 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 import { SITE } from "config";
+import PostFooter from "@components/shared/PostFooter.astro";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -51,13 +52,23 @@ const layoutProps = {
         >
       </div>
 
-      <div class="inline-flex items-center justify-between">
+      <div class="hidden md:inline-flex items-center justify-between">
         <div class="inline-flex items-center gap-4">
           <CircleProfileImage width={50} height={50} />
           <Paragraph>Matias Delgado</Paragraph>
         </div>
 
         <time>{formattedDate}</time>
+      </div>
+
+      <div class="flex md:hidden">
+        <div class="inline-flex gap-4 justify-between w-full">
+          <CircleProfileImage width={50} height={50} />
+          <div class="flex flex-col items-end">
+            <Paragraph>Matias Delgado</Paragraph>
+            <time>{formattedDate}</time>
+          </div>
+        </div>
       </div>
     </section>
     <Image
@@ -68,10 +79,54 @@ const layoutProps = {
       width={800}
     />
 
-    <div class="text-lg prose md:text-xl font-junction text-pretty">
+    <div
+      class="text-lg prose md:text-xl font-junction text-pretty mb-8 max-w-full"
+    >
       <Content />
     </div>
   </main>
+  <PostFooter />
 </Layout>
 
-<style></style>
+<script is:inline>
+  function attachCopyButtons() {
+    let copyButtonLabel = "Copiar";
+    let codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+    for (let codeBlock of codeBlocks) {
+      let wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      let copyButton = document.createElement("button");
+      copyButton.className =
+        "copy-code absolute right-3 -top-3 rounded bg-white px-2 py-1 text-xs leading-4 text-black font-medium";
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      // wrap codebock with relative parent element
+      codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      let code = block.querySelector("code");
+      let text = code.innerText;
+
+      await navigator.clipboard.writeText(text);
+
+      // visual feedback that task is completed
+      button.innerText = "Copiado";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+  attachCopyButtons();
+  document.addEventListener("astro:after-swap", attachCopyButtons);
+</script>
