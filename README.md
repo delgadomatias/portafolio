@@ -3,21 +3,31 @@ Podes [visitar](https://www.matiasdelgado.com.ar) el sitio publicado.
 
 ![imagen-del-portafolio](https://i.imgur.com/4TYBtza.png)
 
-## 🚀 Project Structure
+## 🚀 Estructura del proyecto
 
-Inside of your Astro project, you'll see the following folders and files:
+Dentro del proyecto, veras las siguientes carpetas:
 
 ```text
 /
 ├── public/
+│   └── fonts/
+│   └── images/
 │   └── favicon.svg
+│   └── robots.txt
 ├── src/
 │   ├── components/
 │   │   └── Card.astro
+│   ├── content/
+│   │   └── blog/
+│   │   └── config.ts
 │   ├── layouts/
+│   │   └── Blog.astro
 │   │   └── Layout.astro
+│   │   └── PostDetails.astro
 │   └── pages/
+│       └── blog/
 │       └── index.astro
+│   └── utils/
 └── package.json
 ```
 
