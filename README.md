@@ -16,7 +16,12 @@ Dentro del proyecto, veras las siguientes carpetas:
 │   └── robots.txt
 ├── src/
 │   ├── components/
-│   │   └── Card.astro
+│   │   └── icons/
+│   │   └── layout/
+│   │   └── sections/
+│   │   └── shared/
+│   │   └── text/
+│   │   └── ui/
 │   ├── content/
 │   │   └── blog/
 │   │   └── config.ts
@@ -31,25 +36,5 @@ Dentro del proyecto, veras las siguientes carpetas:
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Si queres editar el proyecto, comienza por el archivo **config.ts**, luego si queres modificar el contenido del blog tambien debes modificar el **content/config.ts**
+**Importante**: si queres cambiar los items de la experiencia debes modificar el Array ubicado en **/src/components/sections/experience/Experience.astro**
