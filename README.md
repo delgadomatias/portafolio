@@ -37,4 +37,5 @@ Dentro del proyecto, veras las siguientes carpetas:
 ```
 
 Si queres editar el proyecto, comienza por el archivo **config.ts**, luego si queres modificar el contenido del blog tambien debes modificar el **content/config.ts**
+<br />
 **Importante**: si queres cambiar los items de la experiencia debes modificar el Array ubicado en **/src/components/sections/experience/Experience.astro**
