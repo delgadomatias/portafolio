@@ -1,6 +1,5 @@
 # Portafolio realizado con Astro
-## Visita el sitio web
-[Visitar](https://www.matiasdelgado.com.ar)
+Puedes [Visitar](https://www.matiasdelgado.com.ar) el sitio publicado.
 
 ```sh
 npm create astro@latest -- --template basics
