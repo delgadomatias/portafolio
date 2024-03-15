@@ -86,7 +86,7 @@ import Menu from "./Menu.astro";
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
         setTimeout(() => {
-          menuDiv.classList.toggle("visible");
+          menuDiv?.classList.toggle("visible");
           document.body.classList.remove("overflow-hidden");
           menuFirstLine.classList.toggle("rotate-45");
           menuSecondLine.classList.toggle("-rotate-45");
@@ -95,7 +95,7 @@ import Menu from "./Menu.astro";
     });
 
     menuButton?.addEventListener("click", () => {
-      menuDiv.classList.toggle("visible");
+      menuDiv?.classList.toggle("visible");
       document.body.classList.toggle("overflow-hidden");
     });
   }
