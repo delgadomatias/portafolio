@@ -1,9 +1,9 @@
 export const NAVBAR = {
   links: [
     { href: "#home", title: "Inicio" },
-    { href: "#about", title: "Sobre mi" },
-    { href: "#experience", title: "Experiencia" },
+    { href: "#about-me", title: "Sobre mi" },
     { href: "#projects", title: "Proyectos" },
+    { href: "#experience", title: "Experiencia" },
     { href: "#blog", title: "Blog" },
   ],
 };
