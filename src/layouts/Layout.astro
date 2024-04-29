@@ -58,6 +58,12 @@ const {
     <ViewTransitions />
   </head>
   <body class="relative overflow-x-hidden bg-primary-950">
+    <div
+      class="absolute left-0 w-1 z-[999] bg-[#fde047] hidden lg:block"
+      id="scrollIndicator"
+    >
+    </div>
+
     <slot />
 
     <style is:global>
@@ -67,6 +73,34 @@ const {
       @tailwind base;
       @tailwind components;
       @tailwind utilities;
+
+      #scrollIndicator {
+        animation: scrollIndicator linear both;
+        animation-timeline: scroll();
+      }
+
+      #scrollIndicatorMobile {
+        animation: scrollIndicatorMobile linear both;
+        animation-timeline: scroll();
+      }
+
+      @keyframes scrollIndicator {
+        from {
+          height: 0;
+        }
+        to {
+          height: 100%;
+        }
+      }
+
+      @keyframes scrollIndicatorMobile {
+        from {
+          width: 0;
+        }
+        to {
+          width: calc(100% - 3rem);
+        }
+      }
 
       kbd {
         @apply bg-black !text-white;

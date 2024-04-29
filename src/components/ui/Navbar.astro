@@ -22,7 +22,13 @@ import Menu from "./Menu.astro";
       })
     }
   </div>
+
   <nav class="container relative h-full p-container">
+    <div
+      class="absolute bottom-0 h-1 z-[999] bg-[#fde047] lg:hidden"
+      id="scrollIndicatorMobile"
+    >
+    </div>
     <ul class="flex items-center justify-between w-full h-full text-white">
       <li class="inline-flex items-center gap-3">
         <CircleProfileImage width={35} height={35} class="rounded-full" />
