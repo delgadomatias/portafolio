@@ -1,5 +1,6 @@
 ---
 import Footer from "@components/shared/Footer.astro";
+import { InViewReveal } from "@components/ui/InViewReveal";
 import Layout from "@layouts/Layout.astro";
 import AboutMe from "@sections/about-me/AboutMe.astro";
 import Blog from "@sections/blog/Blog.astro";
@@ -21,11 +22,27 @@ const layoutProps = {
 <Layout {...layoutProps}>
   <Navbar />
   <main class="relative grid gap-14">
-    <Home />
-    <AboutMe />
-    <Projects />
-    <Experience />
-    <Blog />
+    <InViewReveal client:load useY={false}>
+      <Home />
+    </InViewReveal>
+
+    <InViewReveal client:load>
+      <AboutMe />
+    </InViewReveal>
+
+    <InViewReveal client:load>
+      <Projects />
+    </InViewReveal>
+
+    <InViewReveal client:load>
+      <Experience />
+    </InViewReveal>
+
+    <InViewReveal client:load>
+      <Blog />
+    </InViewReveal>
   </main>
-  <Footer />
+  <InViewReveal client:only>
+    <Footer />
+  </InViewReveal>
 </Layout>
