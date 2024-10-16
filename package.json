@@ -17,7 +17,7 @@
     "@studio-freight/lenis": "^1.0.34",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
-    "astro": "^4.2.6",
+    "astro": "^4.16.1",
     "clsx": "^2.1.0",
     "framer-motion": "^10.18.0",
     "gsap": "^3.12.5",
