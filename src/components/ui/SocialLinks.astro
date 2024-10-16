@@ -8,19 +8,13 @@ const SOCIAL_LINKS = [
     name: "GitHub",
     url: "https://www.github.com/delgadomatias",
     Icon: GithubIcon,
-    titleLink: "El perfil de GitHub de Matias Delgado",
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.github.com/delgadomatias",
-    Icon: LinkedInIcon,
-    titleLink: "El perfil de LinkedIn de Matias Delgado",
+    titleLink: "El perfil de GitHub de Matías Delgado",
   },
   {
     name: "Instagram",
     url: "https://instagram.com/mmatidelga2",
     Icon: InstagramIcon,
-    titleLink: "El perfil de Instagram de Matias Delgado",
+    titleLink: "El perfil de Instagram de Matías Delgado",
   },
 ];
 ---
@@ -28,16 +22,16 @@ const SOCIAL_LINKS = [
 <div class="flex gap-3">
   {
     SOCIAL_LINKS.map((link) => {
-      const { Icon, titleLink, url } = link;
+      const {Icon, titleLink, url} = link;
       return (
-        <a
-          href={url}
-          title={titleLink}
-          class="transition-transform duration-300 ease-in-out hover:-translate-y-1"
-          target="_blank"
-        >
-          <Icon />
-        </a>
+          <a
+              href={url}
+              title={titleLink}
+              class="transition-transform duration-300 ease-in-out hover:-translate-y-1"
+              target="_blank"
+          >
+            <Icon/>
+          </a>
       );
     })
   }

@@ -5,14 +5,14 @@ import ProjectItem from "./ProjectItem.astro";
 
 export interface Project {
   alt: string;
-  code: string;
+  code?: string;
   description: string;
   image: string;
   mobileImage: string;
   name: string;
   tags: Tag[];
   title: string;
-  url: string;
+  url?: string;
 }
 
 interface Tag {
@@ -39,26 +39,25 @@ const PROJECTS = [
   {
     name: "Abogado Rojo",
     description:
-      "Landing Page realizada para un abogado, con el fin de promocionar sus servicios y captar potenciales clientes. Con un enfoque en la elegancia, la seriedad y la velocidad de la pagina.",
+      "Landing page realizada para un abogado, con el fin de promocionar sus servicios y captar potenciales clientes. Con un enfoque en la elegancia, la seriedad y la velocidad de la página.",
     image: "/images/projects/rojo.webp",
     mobileImage: "/images/projects/rojo-mobile.webp",
     tags: [TAGS.ASTRO, TAGS.TAILWIND],
-    alt: "Imagen de la web de Abogado Rojo",
-    title: "Imagen de la web de Abogado Rojo",
+    alt: "Imágen de la web de Abogado Rojo",
+    title: "Imágen de la web de Abogado Rojo",
     url: "https://www.abogadorojo.com",
-    code: "https://www.github.com/delgadomatias/abogadorojo",
   },
   {
-    name: "Teclearla",
+    name: "Enfoque libre",
     description:
-      "Landing Page realizada para mi Startup de Desarrollo Web, contiene renderizado del lado del servidor con Astro. También posee un formulario de contacto que envía un correo electrónico a mi bandeja de entrada.",
-    image: "/images/projects/teclearla.webp",
-    mobileImage: "/images/projects/teclearla-mobile.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
-    alt: "Imagen de la web de Teclearla",
-    title: "Imagen de la web de Teclearla",
-    url: "https://www.teclearla.com.ar",
-    code: "https://www.github.com/delgadomatias/teclearla",
+    "Landing page realizada para una psicoterapeuta. Con un diseño elegante y profesional, prioriza la velocidad de carga y una navegación sencilla, creando un ambiente de confianza y bienestar.",
+    image: "/images/projects/enfoque-libre.webp",
+
+    mobileImage: "/images/projects/enfoque-libre-mobile.webp",
+    tags: [TAGS.ASTRO, TAGS.TAILWIND],
+    alt: "Imagen de la web de Tesla Shop",
+    title: "Imagen de la web de Tesla Shop",
+    url: "https://www.enfoquelibrepsiydh.com/",
   },
   {
     name: "Pomotech",
@@ -67,30 +66,30 @@ const PROJECTS = [
     image: "/images/projects/pomotech.webp",
     mobileImage: "/images/projects/pomotech-mobile.webp",
     tags: [TAGS.NEXT, TAGS.TAILWIND],
-    alt: "Imagen de la web de Pomotech",
-    title: "Imagen de la web de Pomotech",
+    alt: "Imágen de la web de Pomotech",
+    title: "Imágen de la web de Pomotech",
     url: "https://pomotech.vercel.app/",
     code: "https://www.github.com/delgadomatias/pomotech",
   },
   {
-    name: "Tesla Shop",
+    name: "Teclearla",
     description:
-      "E-commerce de Tesla, podes visualizar productos, agregarlos al carrito de compras, realizar la compra via PayPal y ver el estado de tu pedido. Se permite la búsqueda por diversas categorías y distintos filtrados.",
-    image: "/images/projects/tesla.webp",
-
-    mobileImage: "/images/projects/tesla-mobile.webp",
+      "Landing page desarrollada para mi startup de desarrollo web. La página está diseñada para ofrecer una experiencia fluida y atractiva, destacando los servicios y proyectos de la empresa.",
+    image: "/images/projects/teclearla.webp",
+    mobileImage: "/images/projects/teclearla-mobile.webp",
     tags: [TAGS.NEXT, TAGS.TAILWIND],
-    alt: "Imagen de la web de Tesla Shop",
-    title: "Imagen de la web de Tesla Shop",
-    url: "https://teslashop.vercel.app/",
-    code: "https://www.github.com/delgadomatias/tesla-shop",
+    alt: "Imágen de la web de Teclearla",
+    title: "Imágen de la web de Teclearla",
+    url: "https://www.teclearla.com.ar",
+    code: "https://www.github.com/delgadomatias/teclearla",
   },
+
 ];
 ---
 
 <Section
   class="container items-stretch w-full md:items-center"
-  description="Proyectos que he realizado en el ultimo tiempo."
+  description="Proyectos que he realizado en el último tiempo."
   descriptionClass="p-container"
   title="Proyectos"
   id={"projects"}
@@ -102,14 +101,5 @@ const PROJECTS = [
         return <ProjectItem project={project} isEven={isEven} />;
       })
     }
-    <div class="md:p-container md:mt-12">
-      <Image
-        alt="Imágenes de todos los proyectos"
-        class="object-cover w-full h-full min-h-64"
-        height={800}
-        src="/images/projects/projects-full.webp"
-        width={1280}
-      />
-    </div>
   </div>
 </Section>

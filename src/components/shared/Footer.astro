@@ -3,32 +3,28 @@ import GithubIcon from "@icons/GithubIcon.astro";
 import InstagramIcon from "@icons/InstagramIcon.astro";
 import MailIcon from "@icons/MailIcon.astro";
 import CircleProfileImage from "@ui/CircleProfileImage.astro";
-import { NAVBAR } from "config";
+import {NAVBAR} from "config";
 
 const currentYear = new Date().getFullYear();
 ---
 
 <footer
-  class="container grid gap-12 pt-4 pb-32 md:pb-24 mt-8 md:mt-24 text-white sm:justify-between place-content-center sm:grid-cols-2 p-container"
+    class="container grid gap-12 pt-4 pb-32 md:pb-24 mt-8 md:mt-24 text-white sm:justify-between place-content-center sm:grid-cols-2 p-container"
 >
   <ul class="grid md:col-span-1 order-2 md:order-1">
     <li
-      class="flex gap-6 items-center text-center md:text-start md:items-start flex-col justify-between"
+        class="flex gap-6 items-center text-center md:text-start md:items-start flex-col"
     >
       <div class="inline-flex gap-4 items-center">
-        <CircleProfileImage width={60} height={60} class="rounded-full" />
-        <h1>Matias Delgado</h1>
+        <CircleProfileImage width={60} height={60} class="rounded-full"/>
+        <h1>Matías Delgado</h1>
       </div>
-      <p>
-        Matias Delgado, desarrollador web y estudiante de Ingeniería en
-        Sistemas. Si todo sale bien, en poco mas de dos años me recibo.
-        Aprendiendo constantemente y siempre buscando mejorar.
-      </p>
+      <p>¡Gracias por visitar mi portafolio! Agradezco tu interés en mi trabajo y estoy entusiasmado por la posibilidad de colaborar en futuros proyectos.</p>
     </li>
   </ul>
 
   <ul
-    class="grid items-center md:justify-end gap-1 md:col-span-1 order-1 md:order-2 justify-center text-center md:text-start"
+      class="grid items-center md:justify-end gap-1 md:col-span-1 order-1 md:order-2 justify-center text-center md:text-start"
   >
     <li class="mb-4">
       <h2 class="text-2xl font-semibold uppercase">Links rápidos</h2>
@@ -36,30 +32,32 @@ const currentYear = new Date().getFullYear();
     {
       NAVBAR.links.map((link) => {
         return (
-          <li>
-            <a href={link.href} class="text-lg">
-              {link.title}
-            </a>
-          </li>
+            <li>
+              <a href={link.href} class="text-lg">
+                {link.title}
+              </a>
+            </li>
         );
       })
     }
     <li class="flex gap-2 mt-4 justify-center md:justify-start">
       <a
-        href="https://www.instagram.com/mmatidelga2"
-        title="Instagram de Matias Delgado"
+          href="https://www.instagram.com/mmatidelga2"
+          title="Instagram de Matías Delgado"
       >
-        <InstagramIcon class="w-8 h-8" />
+        <InstagramIcon class="w-8 h-8"/>
       </a>
       <a
-        href="https://www.github.com/delgadomatias"
-        title="Github de Matias Delgado"
+          href="https://www.github.com/delgadomatias"
+          title="Github de Matías Delgado"
       >
-        <GithubIcon class="w-8 h-8" />
+        <GithubIcon class="w-8 h-8"/>
       </a>
       <a
-        href="mailto:mmatidelga2@gmail.com"
-        title="Enviar un mail a Matias Delgado"><MailIcon class="w-8 h-8" /></a
+          href="mailto:matiasdelgadodev@gmail.com"
+          title="Enviar un mail a Matías Delgado">
+        <MailIcon class="w-8 h-8"/>
+      </a
       >
     </li>
   </ul>

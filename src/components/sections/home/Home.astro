@@ -7,50 +7,27 @@ import SocialLinks from "@components/ui/SocialLinks.astro";
 ---
 
 <section
-  class="relative flex flex-col items-center justify-center px-8 py-16 bg-primarySlate min-h-screenMinusNavbar sm:min-h-fit"
-  id="home"
+    class="relative flex flex-col items-center justify-center px-8 py-16 bg-primarySlate min-h-screenMinusNavbar sm:min-h-fit"
+    id="home"
 >
   <!-- Header -->
   <Title class="text-5xl text-center md:text-6xl lg:text-7xl"
-    >Matias Delgado</Title
+  >Matias Delgado</Title
   >
   <Subtitle class="text-center lg:text-5xl">Desarrollador de Software</Subtitle>
 
   <div class="flex flex-col items-center gap-6 mt-6">
-    <!-- Paragraph -->
-    <div class="block sm:hidden">
+    <div>
       <Paragraph>
-        Soy un desarrollador con más afinidad en el Frontend pero con
-        conocimientos en el área del Backend.
-      </Paragraph>
-
-      <Paragraph
-        >Me gusta aprender cosas nuevas y compartir conocimientos. Desarrollo
-        proyectos de manera Freelancer a través de <a
-          title="Web de Teclearla"
-          target="_blank"
-          href="https://www.teclearla.com.ar"
-          class="underline">Teclearla</a
-        ></Paragraph
-      >
-    </div>
-
-    <div class="hidden sm:block">
-      <Paragraph>
-        Soy un desarrollador con más afinidad en el Frontend pero con
-        conocimientos en el área del Backend. Me gusta aprender cosas nuevas y
-        compartir conocimientos. Desarrollo proyectos de manera Freelancer a
-        través de <a
-          title="Web de Teclearla"
-          target="_blank"
-          href="https://www.teclearla.com.ar"
-          class="underline">Teclearla</a
-        >
+        Soy Matías Delgado, un desarrollador con mayor afinidad en el desarrollo Frontend y una
+        sólida base en Backend. Como estudiante avanzado de Sistemas, mantengo un <span
+          class="selected">enfoque constante en el aprendizaje</span>
+        y en la mejora de habilidades técnicas y de diseño.
       </Paragraph>
     </div>
 
     <!-- Social Links -->
-    <SocialLinks />
-    <PrimaryAnchor href="mailto:mmatidelga2@gmail.com">Contacto</PrimaryAnchor>
+    <SocialLinks/>
+    <PrimaryAnchor href="mailto:matiasdelgadodev@gmail.com">Contacto</PrimaryAnchor>
   </div>
 </section>

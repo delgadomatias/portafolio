@@ -1,48 +1,29 @@
 ---
-import Footer from "@components/shared/Footer.astro";
-import { InViewReveal } from "@components/ui/InViewReveal";
-import Layout from "@layouts/Layout.astro";
 import AboutMe from "@sections/about-me/AboutMe.astro";
-import Blog from "@sections/blog/Blog.astro";
 import Experience from "@sections/experience/Experience.astro";
+import Footer from "@components/shared/Footer.astro";
 import Home from "@sections/home/Home.astro";
-import Projects from "@sections/projects/Projects.astro";
+import Layout from "@layouts/Layout.astro";
 import Navbar from "@ui/Navbar.astro";
-import { SITE } from "config";
+import Projects from "@sections/projects/Projects.astro";
+import {SITE} from "config";
 
 const layoutProps = {
-  title: "Matias Delgado | Desarrollador de Software",
+  title: "Matías Delgado | Desarrollador de Software",
   description:
-    "Soy Matias Delgado, un desarrollador de software con afinidad en Frontend y Backend, apasionado por la tecnología y dia a dia aprendiendo cosas nuevas.",
+      "Soy Matías Delgado, estudiante avanzado de Ing. en Sistemas con un fuerte conocimiento en desarrollo Frontend. Aunque mi especialidad está en esta área, también tengo experiencia en tareas y proyectos de Backend.",
   ogImage: "/images/profile-image.webp",
   canonicalUrl: SITE.url,
 };
 ---
 
 <Layout {...layoutProps}>
-  <Navbar />
+  <Navbar/>
   <main class="relative grid gap-14">
-    <InViewReveal client:load useY={false}>
-      <Home />
-    </InViewReveal>
-
-    <InViewReveal client:load>
-      <AboutMe />
-    </InViewReveal>
-
-    <InViewReveal client:load>
-      <Projects />
-    </InViewReveal>
-
-    <InViewReveal client:load>
-      <Experience />
-    </InViewReveal>
-
-    <InViewReveal client:load>
-      <Blog />
-    </InViewReveal>
+    <Home/>
+    <AboutMe/>
+    <Experience/>
+    <Projects/>
   </main>
-  <InViewReveal client:only>
-    <Footer />
-  </InViewReveal>
+  <Footer/>
 </Layout>

@@ -37,7 +37,7 @@ import Menu from "./Menu.astro";
             >Desarrollador de Software</Paragraph
           >
           <Paragraph class="text-xs md:text-xs text-start"
-            >Matias Delgado</Paragraph
+            >Matías Delgado</Paragraph
           >
         </div>
       </li>
@@ -45,7 +45,7 @@ import Menu from "./Menu.astro";
       <li class="hidden gap-3 text-md md:flex">
         {
           NAVBAR.links.map((link) => {
-            return <a href={link.href}>{link.title}</a>;
+            return <a href={link.href} class="hover:opacity-80 transition-opacity duration-75 ease-linear">{link.title}</a>;
           })
         }
       </li>
@@ -85,8 +85,6 @@ import Menu from "./Menu.astro";
   function toggleNavbar() {
     const menuButton = document.querySelector(".menu-btn");
     const menuDiv = document.querySelector(".menu-div")!;
-    const menuFirstLine = document.querySelector(".menu-btn .first-line")!;
-    const menuSecondLine = document.querySelector(".menu-btn .second-line")!;
     const navLinks = document.querySelectorAll(".nav-link");
 
     navLinks.forEach((link) => {
@@ -94,8 +92,6 @@ import Menu from "./Menu.astro";
         setTimeout(() => {
           menuDiv?.classList.toggle("visible");
           document.body.classList.remove("overflow-hidden");
-          menuFirstLine.classList.toggle("rotate-45");
-          menuSecondLine.classList.toggle("-rotate-45");
         }, 50);
       });
     });
