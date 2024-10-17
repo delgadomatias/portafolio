@@ -1,7 +1,8 @@
 ---
 import GithubIcon from "../icons/GithubIcon.astro";
 import InstagramIcon from "../icons/InstagramIcon.astro";
-import LinkedInIcon from "../icons/LinkedInIcon.astro";
+import CurriculumVitaeIcon from "../icons/CurriculumVitaeIcon.astro"
+import {SITE} from "../../config";
 
 const SOCIAL_LINKS = [
   {
@@ -15,6 +16,12 @@ const SOCIAL_LINKS = [
     url: "https://instagram.com/mmatidelga2",
     Icon: InstagramIcon,
     titleLink: "El perfil de Instagram de Matías Delgado",
+  },
+  {
+    name: "Curriculum",
+    url: `${SITE.url}/curriculum-vitae.pdf`,
+    Icon: CurriculumVitaeIcon,
+    titleLink: "El currículum de Matías Delgado",
   },
 ];
 ---
